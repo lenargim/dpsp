@@ -1,0 +1,72 @@
+.banner
+  background: url("../images/dist/bg.png") no-repeat
+  background-size: 100%
+  height: calc(100vh - 92px)
+  overflow: hidden
+  &__info
+    padding: 24px 0 35px
+    display: flex
+    align-items: stretch
+    justify-content: center
+    position: relative
+    z-index: 1
+    &-item
+      margin: 0 15px
+      padding-bottom: 16px
+      border-bottom: 1px solid rgba(24, 25, 31, 0.08)
+    &-digit
+      font-weight: 300
+      font-size: 48px
+      line-height: 64px
+      font-feature-settings: 'liga' off
+      color: #18191F
+    span
+      font-weight: 300
+      font-size: 16px
+      color: #18191F
+  &__wrap
+    display: flex
+    align-items: flex-start
+    justify-content: flex-start
+    flex-direction: column
+    width: 608px
+    position: relative
+    z-index: 1
+    h1
+      font-size: 36px
+      font-weight: 400
+      padding-bottom: 10vh
+  &__schedule
+    display: flex
+    align-items: center
+    justify-content: flex-start
+    padding-left: 24px
+    border-left: 6px solid $red
+    margin-bottom: 39px
+    .black
+      font-size: 24px
+      margin-right: 36px
+      b
+        text-transform: uppercase
+    .red
+      color: $red
+      font-weight: 500
+      font-size: 72px
+      line-height: 1
+      span
+        font-size: 24px
+  &__button
+    background-color: $red
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.08), 0 2px 24px rgba(0, 0, 0, 0.08)
+    padding: 16px 36px
+    color: #fff
+    font-size: 24px
+    line-height: 35px
+  &__img
+    position: absolute
+    bottom: 0
+    right: 12vw
+    z-index: 0
+    @include between(1280, 1439)
+      width: 25vw
+      right: 10vw

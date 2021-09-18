@@ -1,3 +1,97 @@
 // GENERAL PROJECT STYLES
 
+*
+  box-sizing: border-box
+  outline: none
 
+html
+  overflow-x: hidden
+
+body
+  font-family: 'Jost', sans-serif
+  font-size: 14px
+  line-height: 1.45
+  margin: 0
+  width: 100%
+  padding: 0
+  overflow-x: hidden
+  display: flex
+  flex-direction: column
+  justify-content: flex-start
+  min-width: 320px
+  position: relative
+
+html,
+body
+  height: 100%
+
+header,
+footer,
+section,
+main
+  position: relative
+
+header
+  .container
+    max-width: 1290px
+
+main
+  .container
+    max-width: 1146px
+
+.container
+  width: 100%
+  padding: 0 15px
+  margin: 0 auto
+
+ul, nav
+  list-style-type: none
+a
+  text-decoration: none
+h1, h2, h3, p
+  margin: 0
+  padding: 0
+.button
+  border-radius: 40px
+  display: inline-flex
+  justify-content: center
+  align-items: center
+  cursor: pointer
+.img
+  display: flex
+  align-items: center
+  justify-content: center
+  overflow: hidden
+  img
+    width: 100%
+    height: 100%
+    object-fit: cover
+::placeholder
+  color: #666
+
+::selection
+  color: $blue
+
+input, textarea
+  outline: none
+  &:focus:required:invalid
+    border-color: red
+  &:required:valid
+    border-color: green
+
+h2.title
+  font-weight: 600
+  font-size: 48px
+  line-height: 58px
+h3.title
+  font-weight: 600
+  font-size: 36px
+  line-height: 58px
+.title
+  &_center
+    text-align: center
+button
+  border: none
+  background: $red
+  color: #fff
+  border-radius: 40px

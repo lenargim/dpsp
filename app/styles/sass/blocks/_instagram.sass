@@ -1,0 +1,52 @@
+.instagram
+  padding-bottom: 164px
+  &__container
+    width: 1050px
+    margin: 0 auto
+    display: flex
+    align-items: stretch
+    justify-content: space-between
+  &__gallery
+    width: 558px
+    display: flex
+    justify-content: flex-start
+    align-items: flex-start
+    flex-wrap: wrap
+    gap: 24px
+  &__img
+    border-radius: 24px
+    overflow: hidden
+  &__info
+    background: #F7E4E0
+    border-radius: 24px
+    padding: 36px 91px 49px
+    text-align: center
+    width: 442px
+    position: relative
+    &::after
+      content: ''
+      position: absolute
+      z-index: 0
+      left: 50%
+      top: 50%
+      transform: translate(-50%, -50%)
+      width: 120px
+      height: 120px
+      background: url("../images/dist/svg/instagram-watermark.svg") no-repeat
+      background-size: cover
+    &-title
+      font-size: 28px
+      line-height: 40px
+      padding-bottom: 16px
+  &__link
+    font-size: 24px
+    line-height: 28px
+    color: $red
+    padding-bottom: 40px
+    display: inline-block
+  &__text
+    font-size: 16px
+    padding-bottom: 40px
+  &__button
+    line-height: 20px
+    padding: 12px 20px

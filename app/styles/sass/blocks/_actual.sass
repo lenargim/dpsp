@@ -1,0 +1,41 @@
+.actual
+  padding: 72px 0 100px
+  &__slider
+    margin: 0 auto
+    &-item
+      position: relative
+      filter: drop-shadow(0px 0px 2px rgba(0, 0, 0, 0.08)) drop-shadow(0px 2px 24px rgba(0, 0, 0, 0.08))
+      &::after
+        position: absolute
+        left: 0
+        right: 0
+        top: 0
+        bottom: 0
+        content: ''
+        background-color: rgba(255, 255, 255, 0.6)
+        transition: all 0.4s ease
+      &.swiper-slide-visible::after
+        background-color: unset
+    &-img
+      border-radius: 24px
+      margin-bottom: 16px
+    &-name
+      font-weight: 600
+      font-size: 24px
+      line-height: 28px
+      padding-bottom: 4px
+      color: #000
+    &-desc
+      font-size: 16px
+      line-height: 23px
+      color: $gray1
+  .swiper-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet
+    margin: 0 2px
+    background: $gray2
+    opacity: 1
+    border-radius: 4px
+    width: 8px
+    transition: width 0.4s ease
+    &.swiper-pagination-bullet-active
+      width: 51px
+      background: $yellow

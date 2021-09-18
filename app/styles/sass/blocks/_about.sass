@@ -1,0 +1,54 @@
+.about
+  padding-bottom: 107px
+  &__card
+    width: 100%
+    background: #F7E4E0
+    box-shadow: 0px 0px 96px #F7E4E0
+    border-radius: 34px
+    padding: 48px 48px 45px 48px
+    position: relative
+  &__title, &__desc
+    width: 608px
+  &__title
+    font-weight: 400
+    line-height: 48px
+    padding-bottom: 24px
+  &__desc
+    font-size: 16px
+    padding-bottom: 24px
+  &__inst
+    color: #000
+    background-color: #fff
+    padding: 12px 20px
+    svg
+      margin-right: 8px
+  &__img
+    width: 436px
+    position: absolute
+    z-index: 1
+    bottom: 0
+    right: 39px
+  &__more
+    position: absolute
+    z-index: 2
+    bottom: 0
+    left: 50%
+    transform: translate(-50%, 35px)
+    background-color: #fff
+    color: #000
+    padding: 24px 24px 24px 36px
+    font-size: 16px
+    line-height: 23px
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.08), 0px 2px 24px rgba(0, 0, 0, 0.08)
+    .red
+      margin-left: 36px
+      color: $red
+      display: flex
+      align-items: center
+      justify-content: flex-start
+      &::after
+        content: ''
+        width: 15px
+        height: 15px
+        background: url("../images/dist/svg/arrow-r.svg") no-repeat
+        margin-left: 8px
