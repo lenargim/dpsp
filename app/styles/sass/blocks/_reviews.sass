@@ -1,0 +1,64 @@
+.reviews
+  padding-bottom: 100px
+  &__title
+    padding-bottom: 48px
+  &__item
+    position: relative
+    padding-bottom: 142px
+    &.swiper-slide
+      height: auto
+    &-text
+      color: #18191F
+      font-size: 16px
+      padding: 24px
+      background: #fff
+      border-radius: 10px
+      filter: drop-shadow(0px 7px 40px rgba(0, 0, 0, 0.09))
+      position: relative
+      height: 100%
+      &::after
+        content: ''
+        position: absolute
+        top: 100%
+        left: 50%
+        transform: translateX(-50%)
+        width: 0
+        height: 0
+        border-left: 12px solid transparent
+        border-right: 12px solid transparent
+        border-top: 15.5px solid #fff
+        filter: drop-shadow(0px 7px 40px rgba(0, 0, 0, 0.09))
+    &-other
+      position: absolute
+      left: 0
+      right: 0
+      bottom: 0
+      text-align: center
+    &-img
+      width: 56px
+      height: 56px
+      border-radius: 50%
+      overflow: hidden
+      margin: 0 auto 8px
+    &-name
+      font-weight: 600
+      font-size: 18px
+      font-feature-settings: 'liga' off
+    &-date
+      color: $gray1
+  &__button
+    width: 58px
+    height: 58px
+    border-radius: 50%
+    background: $sweet
+    cursor: pointer
+    position: absolute
+    top: 0
+    display: flex
+    align-items: center
+    justify-content: center
+    &-prev
+      right: 64px
+    &-next
+      right: 0
+      transform: rotate(180deg)

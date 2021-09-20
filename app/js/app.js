@@ -23,4 +23,28 @@ $(document).ready(function(){
       clickable: true
     },
   });
+
+  const reviews = new Swiper('.reviews__slider', {
+    speed: 400,
+    loop: true,
+    slidesPerView: 3,
+    spaceBetween: 30,
+    watchSlidesProgress: false,
+    navigation: {
+      nextEl: '.reviews__button-next',
+      prevEl: '.reviews__button-prev',
+    },
+  });
+
+  const news = new Swiper('.news__slider', {
+    speed: 400,
+    loop: true,
+    slidesPerView: 3,
+    spaceBetween: 30,
+    watchSlidesProgress: false,
+    navigation: {
+      nextEl: '.news__button-next',
+      prevEl: '.news__button-prev',
+    },
+  })
 });

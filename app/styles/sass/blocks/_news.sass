@@ -1,0 +1,56 @@
+.news
+  margin-bottom: 172px
+  &__title
+    padding-bottom: 51px
+  &__bg
+    background-color: $blue
+    opacity: 0.2
+    position: absolute
+    left: 0
+    right: 0
+    bottom: -72px
+    height: 258px
+  &__slider
+    overflow: hidden
+  &__item
+    padding: 24px
+    background: #FFFFFF
+    border: 3px solid #C8EFF4
+    &-title
+      font-weight: 600
+      font-size: 18px
+      padding-bottom: 24px
+    &-exp
+      font-size: 16px
+      color: $gray1
+      padding-bottom: 34px
+    &-date
+      color: $gray1
+    &-link
+      background-color: $blue
+      padding: 10px 20px
+      position: absolute
+      right: 24px
+      bottom: 24px
+      color: #000
+  &__wrap
+    position: relative
+  &__button
+    width: 58px
+    height: 58px
+    overflow: hidden
+    border-radius: 50%
+    border: 3px solid $blue
+    display: flex
+    align-items: center
+    justify-content: center
+    background-color: #fff
+    position: absolute
+    top: 50%
+    &-prev
+      left: -71px
+      transform: translateY(-50%)
+    &-next
+      right: -71px
+      transform: translateY(-50%) rotate(180deg)
+      cursor: pointer
