@@ -1,0 +1,41 @@
+.datepicker
+  width: 50%
+  border-right: 1px solid $gray2
+  position: relative
+.ui-datepicker
+  &-calendar
+    width: 100%
+    padding-right: 10px
+    thead
+      th
+        font-weight: 600
+        font-size: 12px
+        line-height: 17px
+        text-transform: uppercase
+        padding: 10px
+    tbody
+      td
+        font-size: 12px
+        line-height: 17px
+        padding: 10px
+        cursor: pointer
+        text-align: center
+        border-radius: 10px
+        &:hover
+          background-color: $sweet
+    a
+      color: #000
+  &-title
+    padding-bottom: 27px
+    font-weight: 600
+    font-size: 18px
+    line-height: 28px
+  &-prev, &-next
+    position: absolute
+    top: 5px
+  &-prev
+    right: 40px
+  &-next
+    right: 28px
+.ui-state-active
+  font-weight: 600

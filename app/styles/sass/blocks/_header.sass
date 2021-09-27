@@ -1,11 +1,42 @@
 .header
-  background: url("../images/dist/bg.png") no-repeat
-  background-size: 100%
+  overflow: hidden
+  &_page
+    border-radius: 0 0 24px 24px
+    margin-bottom: 24px
+    position: relative
+    background: url("../images/dist/bg.png") no-repeat
+    background-size: 100%
+  &_main
+    position: absolute
+    left: 0
+    right: 0
+    top: 0
+    z-index: 3
+  &.blur
+    position: absolute
+    left: 0
+    right: 0
+    top: 0
+    z-index: 3
+    & .header__bg
+      background-color: rgba(255, 255, 255, 0.8)
+      filter: blur(16px)
+  &__bg
+    position: absolute
+    left: 0
+    right: 0
+    top: 0
+    bottom: 0
+    z-index: 1
+    background: url("../images/dist/bg.png") no-repeat
+    background-size: 100%
   &__wrap
     padding: 24px 0
     display: flex
     align-items: center
     justify-content: flex-start
+    position: relative
+    z-index: 2
   &__logo
     margin-right: 62px
   &__city
@@ -19,12 +50,16 @@
     margin-right: 24px
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.08), 0 2px 24px rgba(0, 0, 0, 0.08)
     svg
+      width: 16px
+      height: 19px
+      fill: #000
       margin-right: 10px
   &__menu
     display: flex
     align-items: center
     justify-content: flex-start
     &-item
+      position: relative
       cursor: pointer
       margin-right: 24px
       &:last-of-type
@@ -34,6 +69,19 @@
         font-size: 16px
         font-weight: 300
         white-space: nowrap
+      &.open
+        &::after
+          position: absolute
+          content: ''
+          width: 24px
+          height: 4px
+          border-radius: 2px
+          background-color: $black
+          bottom: -10px
+          left: calc(50% - 12px)
+          overflow: hidden
+        a
+          font-size: 400
   &__schedule
     display: flex
     align-items: center
@@ -54,9 +102,13 @@
     border-radius: 40px
     background-color: #fff
     padding: 4px 4px 4px 12px
-  &__search
-    margin-right: 19px
-    cursor: pointer
+    .search
+      display: block
+      margin-right: 19px
+      cursor: pointer
+      width: 17.5px
+      height: 17.5px
+      fill: #000
   &__user
     display: flex
     align-items: center

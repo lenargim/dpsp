@@ -1,5 +1,5 @@
 <!--#set var="title" value="DPSP Studio" -->
-<!--#include virtual="/parts/header.html" -->
+<!--#include virtual="/parts/header-main.html" -->
 
 <main class="home">
   <section class="banner">
@@ -25,38 +25,14 @@
             <b>абсолютно бесплатно</b></p>
           <p class="red">0<span>руб.</span></p>
         </div>
-        <div class="banner__button button">Записаться на бесплатную консультацию</div>
+        <div class="banner__button button open-modal">Записаться на бесплатную консультацию</div>
       </div>
     </div>
     <div class="banner__img img"><img src="images/dist/banner.png" alt="banner"></div>
   </section>
-  <section class="actual">
+  <section class="actions">
     <h2 class="title title_center">Актуальные предложения</h2>
-    <div class="actual__slider swiper">
-      <div class="swiper-wrapper">
-        <a href="#" class="actual__slider-item swiper-slide">
-          <div class="actual__slider-img img"><img src="images/dist/slider/slider1.jpg" alt=""></div>
-          <div class="actual__slider-name">5 базовых профилей</div>
-          <div class="actual__slider-desc">скидка 25% на базовые услуги</div>
-        </a>
-        <a href="#" class="actual__slider-item swiper-slide">
-          <div class="actual__slider-img img"><img src="images/dist/slider/slider2.jpg" alt=""></div>
-          <div class="actual__slider-name">5 базовых профилей</div>
-          <div class="actual__slider-desc">скидка 25% на базовые услуги</div>
-        </a>
-        <a href="#" class="actual__slider-item swiper-slide">
-          <div class="actual__slider-img img"><img src="images/dist/slider/slider3.jpg" alt=""></div>
-          <div class="actual__slider-name">5 базовых профилей</div>
-          <div class="actual__slider-desc">скидка 25% на базовые услуги</div>
-        </a>
-        <a href="#" class="actual__slider-item swiper-slide">
-          <div class="actual__slider-img img"><img src="images/dist/slider/slider4.jpg" alt=""></div>
-          <div class="actual__slider-name">5 базовых профилей</div>
-          <div class="actual__slider-desc">скидка 25% на базовые услуги</div>
-        </a>
-      </div>
-      <div class="swiper-pagination"></div>
-    </div>
+      <!--#include virtual="/parts/actions.html" -->
   </section>
   <section class="procedures">
     <div class="container">
@@ -132,7 +108,7 @@
           <p>Наши клиенты могут посетить любую студию в любом городе, если в этом есть необходимость</p>
           <p>За 2021 год наши студии посетило 186 707 клиентов</p></div>
         <a href="https://www.instagram.com/epilier_franch/" target="_blank" class="about__inst button">
-          <!--#include virtual="/images/src/svg/inst.svg" -->
+          <!--#include virtual="/images/dist/svg/inst.svg" -->
           <span>@epilier_franch</span>
         </a>
         <div class="about__img img"><img src="images/dist/banner.png" alt=""></div>
@@ -262,19 +238,19 @@
               <div class="news__item-title">“Инвитро” стала партнером санатория “Озон”</div>
               <div class="news__item-exp">В июле 2021 года медицинская компания “Инвитро” стала эксклюзивным...</div>
               <span class="news__item-date">23.06.2021</span>
-              <a href="#" class="news__item-link button">Читать</a>
+              <a href="news/news-detailed.html" class="news__item-link button">Читать</a>
             </div>
             <div class="swiper-slide news__item">
               <div class="news__item-title">“Инвитро” стала партнером санатория “Озон”</div>
               <div class="news__item-exp">В июле 2021 года медицинская компания “Инвитро” стала эксклюзивным...</div>
               <span class="news__item-date">23.06.2021</span>
-              <a href="#" class="news__item-link button">Читать</a>
+              <a href="news/news-detailed.html" class="news__item-link button">Читать</a>
             </div>
             <div class="swiper-slide news__item">
               <div class="news__item-title">“Инвитро” стала партнером санатория “Озон”</div>
               <div class="news__item-exp">В июле 2021 года медицинская компания “Инвитро” стала эксклюзивным...</div>
               <span class="news__item-date">23.06.2021</span>
-              <a href="#" class="news__item-link button">Читать</a>
+              <a href="news/news-detailed.html" class="news__item-link button">Читать</a>
             </div>
           </div>
           <div class="news__button news__button-prev"><!--#include virtual="/images/src/svg/slider-arrow.svg" --></div>
@@ -291,7 +267,8 @@
           <span>Получить консультацию</span>
           <!--#include virtual="/images/dist/svg/arrow-r.svg" -->
         </a>
-        <div class="consult__img img"><img src="images/dist/consult.png" alt="Получите бесплатную консультацию прямо сейчас"></div>
+        <div class="consult__img img"><img src="images/dist/consult.png"
+                                           alt="Получите бесплатную консультацию прямо сейчас"></div>
       </div>
     </div>
   </section>

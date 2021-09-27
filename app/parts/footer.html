@@ -1,4 +1,201 @@
-	<script src="js/app.min.js"></script>
-
+<div class="overlay overlay-callback">
+  <div class="modal modal-callback">
+    <div class="modal__close"></div>
+    <div class="modal__title">Запишитесь на бесплатную<br>консультацию прямо сейчас</div>
+    <form class="modal__form">
+      <div class="modal__row">
+        <label class="label" for="modal-name">Имя</label>
+        <input type="text" id="modal-name" class="input">
+      </div>
+      <div class="modal__row">
+        <label class="label" for="modal-phone">Контактный номер телефона</label>
+        <input type="tel" id="modal-phone" class="tel input">
+      </div>
+      <div class="modal__row">
+        <div class="select select_city">
+          <div class="label select__title">Город</div>
+          <div class="select__content">
+            <input value="Казань" id="City0" class="select__input" type="radio" name="City" checked />
+            <label for="City0" class="select__label">Казань</label>
+            <input value="Москва" id="City1" class="select__input" type="radio" name="City" />
+            <label for="City1" class="select__label">Москва</label>
+            <input value="Зеленодольск" id="City2" class="select__input" type="radio" name="City" />
+            <label for="City2" class="select__label">Зеленодольск</label>
+            <input value="Санкт-Петербург" id="City3" class="select__input" type="radio" name="City" />
+            <label for="City3" class="select__label">Санкт-Петербург</label>
+          </div>
+        </div>
+      </div>
+      <div class="modal__row">
+        <div class="select select_address">
+          <div class="label select__title">Выберите ближайшую студию</div>
+          <div class="select__content">
+            <input value="пр Ямашева, 108" id="Address0" class="select__input" type="radio" name="Address" checked />
+            <label for="Address0" class="select__label">пр Ямашева, 108</label>
+            <input value="пр Ямашева, 109" id="Address1" class="select__input" type="radio" name="Address" />
+            <label for="Address1" class="select__label">пр Ямашева, 109</label>
+            <input value="пр Ямашева, 110" id="Address2" class="select__input" type="radio" name="Address" />
+            <label for="Address2" class="select__label">пр Ямашева, 110</label>
+            <input value="пр Ямашева, 111" id="Address3" class="select__input" type="radio" name="Address" />
+            <label for="Address3" class="select__label">пр Ямашева, 111</label>
+          </div>
+        </div>
+      </div>
+      <input type="submit" class="modal__submit button" value="Записаться">
+    </form>
+  </div>
+</div>
+<section class="register">
+  <div class="container">
+    <div class="register__wrap">
+      <form class="register__mainform">
+        <div class="register__mainform-field active">
+          <input readonly id="mainform-name" type="text" placeholder="Меня зовут..." name="name" autocomplete="off"
+                 class="register__mainform-input">
+          <label for="mainform-name" class="register__mainform-label">Мои данные</label>
+        </div>
+        <div class="register__mainform-field">
+          <input readonly id="mainform-time" type="text" placeholder="Мне удобно в..." name="time" autocomplete="off"
+                 class="register__mainform-input">
+          <label for="mainform-time" class="register__mainform-label">Время</label>
+        </div>
+        <div class="register__mainform-field">
+          <input readonly id="mainform-address" type="text" placeholder="Выберите студию" name="address"
+                 autocomplete="off" class="register__mainform-input">
+          <label for="mainform-address" class="register__mainform-label">Студия</label>
+        </div>
+        <div class="register__mainform-field">
+          <input readonly id="mainform-service" type="text" placeholder="Я хочу..." name="service" autocomplete="off"
+                 class="register__mainform-input">
+          <label for="mainform-service" class="register__mainform-label">Услуга</label>
+        </div>
+        <div class="register__mainform-field">
+          <input readonly id="mainform-specialist" type="text" placeholder="Я выбираю..." name="specialist"
+                 autocomplete="off" class="register__mainform-input">
+          <label for="mainform-specialist" class="register__mainform-label">Специалист</label>
+        </div>
+        <button type="submit" class="register__mainform-submit">
+          <!--#include virtual="/images/dist/svg/arrow-r.svg" -->
+        </button>
+      </form>
+      <div class="register__details">
+        <div class="register__detail">
+          <div class="register__detail-title">Введите имя и номер телефона</div>
+          <form class="register__detail-subform register-next">
+            <div class="register__detail-row">
+              <input type="text" id="subform-name" class="input" name="name" autocomplete="off">
+              <label for="subform-name" class="label">Имя</label>
+            </div>
+            <div class="register__detail-row">
+              <input type="tel" id="subform-phone" class="input tel" name="name" autocomplete="off">
+              <label for="subform-phone" class="label">Контактный номер телефона</label>
+            </div>
+            <input type="submit" class="register__detail-submit button" value="Далее">
+          </form>
+        </div>
+        <div class="register__detail">
+          <div class="register__detail-title">Выберите удобное время</div>
+          <form class="register__detail-subform register-next">
+            <div class="register__detail-calendar">
+              <div id="datepicker" class="datepicker"></div>
+              <div class="register__detail-time"></div>
+            </div>
+            <input type="submit" class="register__detail-submit button" value="Записаться">
+          </form>
+        </div>
+        <div class="register__detail">
+          <div class="register__detail-title">Выберите студию</div>
+          <form class="register__detail-subform register-next">
+            <div class="register__detail-choose">
+              <input type="radio" id="subform-address1" name="address" value="Волкова 60">
+              <label for="subform-address1" class="register__detail-choose-box">
+                <div class="register__detail-img img">
+                  <img src="images/dist/address/address1.jpg" alt="Студия на Волкова 60">
+                </div>
+                <div class="register__detail-choose-info">
+                  <div class="register__detail-choose-title">Студия на Волкова</div>
+                  <div class="register__detail-choose-addr">г. Кзаань, ул. Волкова, 60</div>
+                </div>
+              </label>
+            </div>
+            <div class="register__detail-choose">
+              <input type="radio" id="subform-address2" name="address" value="Волкова 61">
+              <label for="subform-address2" class="register__detail-choose-box">
+                <div class="register__detail-img img">
+                  <img src="images/dist/address/address2.jpg" alt="Студия на Волкова 61">
+                </div>
+                <div class="register__detail-choose-info">
+                  <div class="register__detail-choose-title">Студия на Волкова</div>
+                  <div class="register__detail-choose-addr">г. Кзаань, ул. Волкова, 61</div>
+                </div>
+              </label>
+            </div>
+            <input type="submit" class="register__detail-submit button" value="Далее">
+          </form>
+        </div>
+        <div class="register__detail">
+          <div class="register__detail-title">Выберите услуги</div>
+          <form class="register__detail-subform register-next">
+            <div class="register__detail-choose">
+              <input type="checkbox" id="subform-service1" name="service" value="Лифтинговая программа">
+              <label for="subform-service1" class="register__detail-choose-box">
+                <div class="register__detail-img img">
+                  <img src="images/dist/address/address1.jpg" alt="Лифтинговая программа">
+                </div>
+                <div class="register__detail-choose-info">
+                  <div class="register__detail-choose-title">Лифтинговая программа</div>
+                  <div class="register__detail-choose-addr">60 мин.</div>
+                </div>
+              </label>
+            </div>
+            <div class="register__detail-choose">
+              <input type="checkbox" id="subform-service2" name="service" value="Лифтинговая программа new">
+              <label for="subform-service2" class="register__detail-choose-box">
+                <div class="register__detail-img img">
+                  <img src="images/dist/address/address2.jpg" alt="Лифтинговая программа new">
+                </div>
+                <div class="register__detail-choose-info">
+                  <div class="register__detail-choose-title">Лифтинговая программа new</div>
+                  <div class="register__detail-choose-addr">61 мин.</div>
+                </div>
+              </label>
+            </div>
+            <input type="submit" class="register__detail-submit button" value="Далее">
+          </form>
+        </div>
+        <div class="register__detail">
+          <div class="register__detail-title">Выберите специалиста</div>
+          <form class="register__detail-subform register-next">
+            <div class="register__detail-choose register__detail-choose_nocheckbox">
+              <input type="radio" id="subform-specialist1" class="choose-specialist" name="specialist" value="Светлана Петрова">
+              <label for="subform-specialist1" class="register__detail-choose-box register__detail-choose-box">
+                <div class="register__detail-img img">
+                  <img src="images/dist/specialist/specialist1.jpg" alt="Светлана Петрова">
+                </div>
+                <div class="register__detail-choose-info">
+                  <div class="register__detail-choose-title">Светлана Петрова</div>
+                  <div class="register__detail-choose-addr">1200 ₽</div>
+                </div>
+              </label>
+            </div>
+            <div class="register__detail-choose register__detail-choose_nocheckbox">
+              <input type="radio" id="subform-specialist2" class="choose-specialist" name="specialist" value="Маргарита Измайлова">
+              <label for="subform-specialist2" class="register__detail-choose-box register__detail-choose-box">
+                <div class="register__detail-img img">
+                  <img src="images/dist/specialist/specialist2.jpg" alt="Маргарита Измайлова">
+                </div>
+                <div class="register__detail-choose-info">
+                  <div class="register__detail-choose-title">Маргарита Измайлова</div>
+                  <div class="register__detail-choose-addr">1500 ₽</div>
+                </div>
+              </label>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<script src="js/app.min.js"></script>
 </body>
 </html>

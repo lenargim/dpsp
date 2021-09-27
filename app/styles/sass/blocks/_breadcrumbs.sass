@@ -1,0 +1,17 @@
+.breadcrumbs
+  display: flex
+  align-items: center
+  justify-content: flex-start
+  margin-bottom: 24px
+  a
+    white-space: nowrap
+    position: relative
+    color: #8C8C8C
+    display: inline-block
+    &:after
+      content: '/'
+      margin: 0 0.5em
+    &:last-of-type
+      color: #262626
+      &::after
+        content: none

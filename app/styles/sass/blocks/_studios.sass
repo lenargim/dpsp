@@ -1,0 +1,155 @@
+.studios-page
+  padding-bottom: 309px
+  &__wrap
+    display: grid
+    grid-gap: 30px
+    grid-template-columns: repeat(3, 1fr)
+    grid-template-rows: auto
+  &__search
+    grid-column: 1/3
+    position: relative
+    input
+      width: 100%
+      border: none
+      padding: 16.5px 24px
+      background: #f9f9f9
+      border-radius: 40px
+      overflow: hidden
+      &::placeholder
+        color: $gray1
+    button
+      background: transparent
+      position: absolute
+      right: 19px
+      top: 50%
+      border-radius: unset
+      transform: translateY(-50%)
+      cursor: pointer
+    svg
+      width: 17.5px
+      height: 17.5px
+      fill: $gray1
+  &__switcher
+    position: relative
+    bottom: 85px
+    display: flex
+    align-items: center
+    div
+      display: inline-block
+      width: 50%
+      text-align: center
+      border: 2px solid $blue
+      padding: 12px
+      color: $gray1
+      font-size: 16px
+      cursor: pointer
+      &:first-of-type
+        border-radius: 40px 0 0 40px
+      &:last-of-type
+        border-radius: 0 40px 40px 0
+      &.active
+        background-color: $blue
+        color: #000
+.studios
+  &__item
+    padding: 24px
+    position: relative
+    background-color: #fff
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.08), 0 2px 24px rgba(0, 0, 0, 0.08)
+    border-radius: 16px
+    &-title
+      font-weight: 600
+      font-size: 18px
+      padding-bottom: 24px
+    &-exp
+      font-size: 16px
+      color: $gray1
+      padding-bottom: 34px
+    &-time
+      color: $red
+    &-link
+      background-color: $blue
+      padding: 10px 20px
+      position: absolute
+      right: 24px
+      bottom: 24px
+      color: #000
+.studios-detailed
+  &__title
+    display: flex
+    align-items: center
+    justify-content: space-between
+  &__workhours
+    font-size: 16px
+    display: flex
+    align-items: center
+    justify-content: flex-start
+    svg
+      width: 14px
+      height: 14px
+      fill: $red
+      margin-right: 10px
+  &__diarections
+    background-color: $red
+    padding: 10px 20px
+    display: flex
+    align-items: center
+    justify-content: flex-start
+    font-size: 14px
+    font-weight: 400
+    color: #000
+    svg
+      width: 11px
+      height: 14px
+      fill: #000
+      margin-right: 11px
+  &__spec
+    position: relative
+    padding-bottom: 106px
+    &-title
+      padding-bottom: 24px
+    &-slider
+      overflow: hidden
+      padding-bottom: 42px
+    &-button
+      position: absolute
+      top: 50%
+      cursor: pointer
+      width: 58px
+      height: 58px
+      display: flex
+      align-items: center
+      justify-content: center
+      border-radius: 50%
+      overflow: hidden
+      z-index: 2
+      border: 3px solid $blue
+    &-prev
+      right: calc(100% + 24px)
+    &-next
+      left: calc(100% + 24px)
+      transform: rotate(180deg)
+    &-item
+      position: relative
+    &-img
+      border-radius: 10px
+      overflow: hidden
+    &-info
+      position: absolute
+      z-index: 2
+      left: 16px
+      right: 16px
+      bottom: -34px
+      background-color: #fff
+      padding: 16px
+      border-radius: 10px
+      box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1)
+      text-align: center
+    &-name
+      font-weight: 600
+      font-size: 18px
+      white-space: nowrap
+    &-position
+      color: $gray1
+  .service
+    padding: 70px 0 100px

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta charset="utf-8">
+	 <base href="/">
+
+	<title><!--#echo var="title" --></title>
+	<meta name="description" content="Startup HTML template OptimizedHTML 5">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="icon" href="images/favicon.png">
+	<meta property="og:image" content="images/dist/preview.jpg">
+	
+	<link rel="stylesheet" href="../css/app.min.css">
+	<link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+	<script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+
+</head>
+
+<body>
+<header class="header header_main">
+	<div class="container">
+		<div class="header__wrap">
+			<a href="/" class="header__logo"><!--#include virtual="/images/src/svg/logo.svg" --></a>
+			<div class="header__city"><!--#include virtual="/images/src/svg/geo.svg" --><span>Казань</span></div>
+			<nav class="header__menu">
+				<li class="header__menu-item header__menu-studios"><a href="studios">Студии</a></li>
+				<li class="header__menu-item header__menu-services"><a href="services">Услуги</a></li>
+				<li class="header__menu-item header__menu-actions"><a href="actions">Актуальные предложения</a></li>
+				<li class="header__menu-item header__menu-news"><a href="news">Новости</a></li>
+				<li class="header__menu-item header__menu-about"><a href="about">О компании</a></li>
+			</nav>
+			<div class="header__schedule open-register">
+				<!--#include virtual="/images/src/svg/calendar.svg" -->
+				<span>Записаться</span>
+			</div>
+			<div class="header__lk">
+				<!--#include virtual="/images/src/svg/search.svg" -->
+				<span>Личный кабинет</span>
+				<div class="header__user"><!--#include virtual="/images/src/svg/user.svg" --></div>
+			</div>
+		</div>
+	</div>
+</header>

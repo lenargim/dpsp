@@ -16,6 +16,7 @@
     padding: 24px
     background: #FFFFFF
     border: 3px solid #C8EFF4
+    position: relative
     &-title
       font-weight: 600
       font-size: 18px
@@ -54,3 +55,34 @@
       right: -71px
       transform: translateY(-50%) rotate(180deg)
       cursor: pointer
+.news-page
+  padding-bottom: 36px
+  &__wrap
+    display: grid
+    grid-gap: 30px
+    grid-template-columns: repeat(3, 1fr)
+    grid-template-rows: auto
+.news-detailed
+  padding-bottom: 100px
+  &__wrap
+    display: flex
+    align-items: flex-start
+    justify-content: flex-start
+    gap: 30px
+  &__date
+    display: flex
+    align-items: center
+    justify-content: flex-start
+    padding-bottom: 12px
+  &__content
+    font-size: 16px
+    p
+      padding-bottom: 1em
+  &__aside
+    display: flex
+    flex-direction: column
+    justify-content: flex-start
+    align-items: stretch
+    gap: 16px
+    .news__item
+      width: 362px
