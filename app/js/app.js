@@ -1,8 +1,46 @@
 import 'jquery';
 import 'jquery-mask-plugin'
+import datepicker from 'js-datepicker'
 
 $(document).ready(function () {
   $('.tel').mask('+7(Z00) 000-00-00', {translation: {'Z': {pattern: /[0-79]/}}});
+
+  let d = new Date();
+
+  let month = d.getMonth();
+  let day = d.getDate();
+  let year = d.getFullYear();
+
+  const picker = datepicker('#datepicker', {
+    alwaysShow: true,
+    showAllDates: true,
+    minDate: new Date(year, month, day),
+    customDays: ['ПН', 'ВТ', 'СР', 'ЧТ', 'ПТ', 'СБ', 'ВС'],
+    customMonths: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
+    formatter: (input, date, instance) => {
+      const options = {year: 'numeric', month: 'numeric', day: 'numeric'};
+      const value = date.toLocaleDateString('ru-RU', options);
+      input.value = value
+    },
+    onSelect: (instance, date) => {
+      const options1 = { month: 'long', day: 'numeric'};
+      const options2 = {weekday: 'long'};
+      let value1 = date.toLocaleDateString('ru-RU', options1);
+      let dayOfWeek = new Intl.DateTimeFormat('ru-RU', options2).format(date);
+      let value2 = dayOfWeek[0].toUpperCase() + dayOfWeek.slice(1);
+      $('.register__detail-time-title').text(`${value1}, ${value2}`);
+      $('.register__detail-time').addClass('active')
+    },
+  });
+
+  $('.register__detail-time-item').on('click', function () {
+    $(this).siblings().removeClass('active');
+    $(this).addClass('active');
+    let time = $(this).text();
+    $('.register__detail-time-input').val(time);
+  });
+
+
 
   const swiper = new Swiper('.swiper', {
     loop: true,
@@ -103,6 +141,19 @@ $(document).ready(function () {
     detail.next('.register__detail').slideDown(400);
   });
 
+  $('.register-last').submit(function (e) {
+    e.preventDefault();
+    let form = $(this);
+    $('.register__detail').hide();
+    let date = form.find('#datepicker').val();
+    let time = form.find('.register__detail-time-input').val();
+    $('#mainform-time').val(date+' '+time);
+    form.find('active').removeClass('active');
+    form.find('qs-active').removeClass('qs-active')
+    $('.register__mainform-field.active').removeClass('active');
+    //$('.blur').removeClass('blur');
+  });
+
   $('.choose-specialist').on('change', function () {
     let detail = $(this).parents('.register__detail');
     detail.hide();
@@ -134,10 +185,6 @@ $(document).ready(function () {
   } else if ( $('main').attr('class').includes('about') ) {
     $('.header__menu-about').addClass('open')
   }
-
-  // $( "#datepicker" ).datepicker({
-  //   yearRange: "2021:2022",
-  // });
 
   const specialists = new Swiper('.studios-detailed__spec-slider', {
     speed: 400,

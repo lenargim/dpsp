@@ -55,11 +55,6 @@
           <label for="mainform-name" class="register__mainform-label">Мои данные</label>
         </div>
         <div class="register__mainform-field">
-          <input readonly id="mainform-time" type="text" placeholder="Мне удобно в..." name="time" autocomplete="off"
-                 class="register__mainform-input">
-          <label for="mainform-time" class="register__mainform-label">Время</label>
-        </div>
-        <div class="register__mainform-field">
           <input readonly id="mainform-address" type="text" placeholder="Выберите студию" name="address"
                  autocomplete="off" class="register__mainform-input">
           <label for="mainform-address" class="register__mainform-label">Студия</label>
@@ -73,6 +68,11 @@
           <input readonly id="mainform-specialist" type="text" placeholder="Я выбираю..." name="specialist"
                  autocomplete="off" class="register__mainform-input">
           <label for="mainform-specialist" class="register__mainform-label">Специалист</label>
+        </div>
+        <div class="register__mainform-field">
+          <input readonly id="mainform-time" type="text" placeholder="Мне удобно в..." name="time" autocomplete="off"
+                 class="register__mainform-input">
+          <label for="mainform-time" class="register__mainform-label">Время</label>
         </div>
         <button type="submit" class="register__mainform-submit">
           <!--#include virtual="/images/dist/svg/arrow-r.svg" -->
@@ -91,16 +91,6 @@
               <label for="subform-phone" class="label">Контактный номер телефона</label>
             </div>
             <input type="submit" class="register__detail-submit button" value="Далее">
-          </form>
-        </div>
-        <div class="register__detail">
-          <div class="register__detail-title">Выберите удобное время</div>
-          <form class="register__detail-subform register-next">
-            <div class="register__detail-calendar">
-              <div id="datepicker" class="datepicker"></div>
-              <div class="register__detail-time"></div>
-            </div>
-            <input type="submit" class="register__detail-submit button" value="Записаться">
           </form>
         </div>
         <div class="register__detail">
@@ -190,6 +180,31 @@
                 </div>
               </label>
             </div>
+            <input type="submit" class="register__detail-submit button" value="Далее">
+          </form>
+        </div>
+        <div class="register__detail">
+          <div class="register__detail-title">Выберите удобное время</div>
+          <form class="register__detail-subform register-last">
+            <div class="register__detail-calendar">
+              <div class="datepicker">
+                <input type="text" id="datepicker">
+              </div>
+              <div class="register__detail-time">
+                <div class="register__detail-time-title"></div>
+                <div class="register__detail-time-wrap">
+                  <input type="text" class="register__detail-time-input">
+                  <div class="register__detail-time-item">13:00</div>
+                  <div class="register__detail-time-item disabled">14:00</div>
+                  <div class="register__detail-time-item">15:00</div>
+                  <div class="register__detail-time-item">16:00</div>
+                  <div class="register__detail-time-item disabled">17:00</div>
+                  <div class="register__detail-time-item">18:00</div>
+                  <div class="register__detail-time-item">19:00</div>
+                </div>
+              </div>
+            </div>
+            <input type="submit" class="register__detail-submit button" value="Записаться">
           </form>
         </div>
       </div>

@@ -155,3 +155,42 @@
       width: 100%
     &-time
       width: 50%
+      padding-left: 24px
+      display: none
+      &.active
+        display: block
+      &-title
+        padding-bottom: 24px
+        font-weight: 600
+        font-size: 18px
+        line-height: 28px
+        color: $black
+      &-wrap
+        display: flex
+        gap: 12px
+        justify-content: flex-start
+        align-items: flex-start
+        flex-wrap: wrap
+      &-item
+        width: 95px
+        height: 36px
+        text-align: center
+        display: inline-flex
+        justify-content: center
+        align-items: center
+        border: 1px solid #EDEDED
+        border-radius: 4px
+        cursor: pointer
+        &.disabled
+          background: #EDEDED
+          border: 1px solid #EDEDED
+          color: $gray1
+        &.active
+          background-color: $sweet
+          font-weight: 500
+          border-color: $sweet
+      &-input
+        visibility: hidden
+        height: 0
+        position: absolute
+        z-index: -1
