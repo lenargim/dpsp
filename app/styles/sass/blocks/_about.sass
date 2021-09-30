@@ -1,18 +1,30 @@
 .about
   padding-bottom: 107px
+  @include max(1279)
+    padding-bottom: 89px
   &__card
     width: 100%
     background: #F7E4E0
-    box-shadow: 0px 0px 96px #F7E4E0
+    box-shadow: 0 0 96px #F7E4E0
     border-radius: 34px
     padding: 48px 48px 45px 48px
     position: relative
+    @include max(1279)
+      padding: 24px 24px 100vw
+    @include max(374)
+      padding: 15px 15px 90vw
   &__title, &__desc
     width: 608px
-  &__title
+    @include max(1279)
+      width: 100%
+  h3.title
     font-weight: 400
     line-height: 48px
     padding-bottom: 24px
+    @include max(1279)
+      font-size: 24px
+    @include max(374)
+      line-height: 32px
   &__desc
     font-size: 16px
     padding-bottom: 24px
@@ -31,6 +43,11 @@
     z-index: 1
     bottom: 0
     right: 39px
+    @include between(1024, 1279)
+      width: 33.3%
+    @include max(1279)
+      width: 80%
+      right: 10%
   &__more
     position: absolute
     z-index: 2
@@ -43,6 +60,9 @@
     font-size: 16px
     line-height: 23px
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.08), 0 2px 24px rgba(0, 0, 0, 0.08)
+    @include max(1279)
+      flex-direction: column
+      border-radius: 24px
     .red
       margin-left: 36px
       color: $red
@@ -60,12 +80,28 @@
     justify-content: space-between
     align-items: center
     padding-bottom: 72px
+    @include max(767)
+      flex-direction: column
+      justify-content: flex-start
+      align-items: flex-start
+      padding-bottom: 24px
+      h1
+        padding-bottom: 16px
   &__subtitles
     display: flex
     align-items: center
     justify-content: flex-end
     padding-bottom: 16px
     border-bottom: 1px solid $gray2
+    @include max(767)
+      overflow-x: auto
+      justify-content: flex-start
+      width: 100%
+      &::-webkit-scrollbar
+        display: none
+        width: 0
+        height: 0
+        visibility: hidden
   &__subtitle
     white-space: nowrap
     margin-left: 24px
@@ -81,8 +117,15 @@
     grid-template-rows: auto
     grid-template-columns: repeat(4, 1fr)
     padding-bottom: 72px
+    @include max(1279)
+      grid-template-columns: repeat(2, 1fr)
+    @include max(767)
+      grid-template-columns: 1fr
+      grid-gap: 16px
     &-item
       position: relative
+      @include max(1279)
+        text-align: center
       .about-page__infographics-img
         &:after
           content: ''
@@ -92,6 +135,8 @@
           bottom: 0
           left: 88px
           position: absolute
+          @include max(1279)
+            content: none
       &:last-of-type .about-page__infographics-img:after
         content: none
       &:nth-of-type(2) .about-page__infographics-img:after
@@ -108,6 +153,8 @@
       background-color: $sweet
       border-radius: 50%
       position: relative
+      @include max(1279)
+        margin: 0 auto 16px
     &-title
       padding-bottom: 8px
       font-weight: 600
@@ -116,13 +163,20 @@
       white-space: nowrap
     &-desc
       font-size: 18px
+      @include between(1024, 1279)
+        font-size: 14px
   &__portrait
     padding: 85px 0 111px
     background-color: $blue
+    @include max(767)
+      padding: 36px 0
     &-title
       font-size: 36px
       font-weight: 600
       padding-bottom: 72px
+      @include max(767)
+        font-size: 18px
+        padding-bottom: 24px
     &-wrap
       display: grid
       gap: 48px
@@ -130,6 +184,11 @@
       grid-template-rows: auto
       margin-bottom: 72px
       max-width: 730px
+      @include max(1279)
+        grid-template-columns: 1fr
+      @include max(767)
+        gap: 12px
+        margin-bottom: 24px
     &-item
       padding-left: 20px
       position: relative
@@ -143,7 +202,6 @@
         top: 0
         bottom: 0
         left: 0
-
     &-name
       font-weight: 600
       font-size: 18px
@@ -153,21 +211,53 @@
     &-extra
       font-size: 16px
       max-width: 730px
+      position: relative
+      z-index: 1
+      @include max(1279)
+        max-width: 222px
     &-img
       position: absolute
       right: 0
       bottom: 0
       max-height: 600px
+      @include between(1024, 1279)
+        max-height: 500px
+        right: -100px
+      @include max(1279)
+        max-height: 100vw
+        right: -20%
+      @include max(767)
+        right: 0
   &__founder
     background-color: #F9FAFC
     padding: 137px 0
     overflow: hidden
+    @include max(1279)
+      padding: 50vh 0 124px
+    @include max(767)
+      padding-top: 505px
     &-img
       position: absolute
       bottom: 0
       left: 10%
       max-width: 436px
       z-index: 1
+      @include between(1280, 1279)
+        max-width: 400px
+        left: 5%
+      @include between(768,1279)
+        max-width: unset
+        height: 50vh
+        bottom: unset
+        top: 0
+        left: 50%
+        transform: translateX(-50%)
+      @include max(767)
+        width: 100%
+        max-width: unset
+        left: 0
+        top: 84px
+        bottom: unset
     &-box
       background-color: $sweet
       padding: 36px 70px
@@ -175,15 +265,26 @@
       width: 441px
       margin: 0 10% 0 auto
       text-align: center
+      position: relative
+      z-index: 1
+      @include max(1279)
+        margin: 0 auto
+      @include max(767)
+        width: 100%
+        padding: 24px
     &-name
       font-size: 36px
       line-height: 52px
       padding-bottom: 16px
+      @include max(767)
+        padding-bottom: 8px
     &-desc
       font-size: 18px
       line-height: 26px
       color: #5E5E5E
       padding-bottom: 72px
+      @include max(767)
+        padding-bottom: 36px
     &-inst
       color: $red
       font-size: 24px
@@ -230,6 +331,8 @@
         left: 8%
         top: 180px
         transform: rotate(-90deg)
+        @include max(767)
+          left: 121px
         &::after
           background-color: $blue
       &:nth-of-type(4)
@@ -244,19 +347,30 @@
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.08), 0 2px 24px rgba(0, 0, 0, 0.08)
     border-radius: 16px
     padding: 36px
+    @include max(767)
+      padding: 16px
     &-title
       font-weight: 600
       font-size: 18px
       line-height: 28px
       padding-bottom: 36px
+      @include max(767)
+        padding-bottom: 24px
   &__table
     width: 100%
     td
       padding-bottom: 24px
       font-size: 16px
+      @include max(767)
+        padding-bottom: 16px
       &:first-of-type
         color: $gray1
         width: 190px
+        @include max(767)
+          padding-bottom: 4px
+          width: 100%
+      @include max(767)
+        display: block
     tr:last-of-type td
       padding-bottom: 0
     a
@@ -268,11 +382,20 @@
     grid-template-columns: repeat(3, 1fr)
     grid-gap: 30px
     padding-bottom: 732px
+    @include between(1024, 1279)
+      grid-gap: 16px
+    @include max(1023)
+      grid-template-columns: repeat(2, 1fr)
+    @include max(767)
+      grid-template-columns: 1fr
+      grid-gap: 16px
   &__box
     background-color: #fff
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.08), 0 2px 24px rgba(0, 0, 0, 0.08)
     border-radius: 12px
     padding: 24px
+    @include max(374)
+      padding: 16px
   &__img
     width: 50px
     height: 50px
@@ -298,32 +421,69 @@
       margin-bottom: 0
 .about-vakansy
   padding-bottom: 347px
+  @include max(1279)
+    padding-bottom: 271px
+    .about-page__title
+      padding-bottom: 0
 .vakansy__card
   padding: 100px 0
   overflow: hidden
+  @include between(768, 1279)
+    padding: 70px 0
+  @include max(767)
+    padding: 24px 0 72px
   &-wrap
     position: relative
     padding: 104px 48px
     background-color: $sweet
     box-shadow: 0 0 96px #F7E4E0
     border-radius: 34px
+    @include max(1279)
+      padding: 60px 40px
+    @include max(767)
+      padding: 16px 16px 167px
+      overflow: hidden
   &-img
     position: absolute
     max-width: 327px
     bottom: 0
     right: 68px
+    @include between(1024, 1279)
+      max-width: 300px
+      right: 20px
+    @include max(1279)
+      max-width: 33%
+      right: 0
+    @include max(767)
+      max-width: 228px
+      right: -77px
+    @include max(374)
+      max-width: 160px
+      right: -50px
   &-info
     max-width: 608px
+    @include max(1279)
+      max-width: 66%
+    @include max(767)
+      max-width: unset
   &-title
     font-size: 36px
     line-height: 48px
     padding-bottom: 24px
+    @include max(767)
+      font-size: 28px
+      padding-bottom: 16px
   &-desc
     font-size: 24px
     line-height: 48px
     padding-bottom: 24px
+    @include max(767)
+      font-size: 18px
+      padding-bottom: 16px
   &-text
     font-size: 16px
+    @include max(767)
+      max-width: 210px
 .vakansy__list
   &-title
     font-weight: 600
@@ -337,6 +497,8 @@
     display: block
     &:last-of-type
       margin-bottom: 0
+    @include max(767)
+      padding: 16px
   &-name
     font-size: 24px
     line-height: 28px
@@ -345,6 +507,9 @@
     justify-content: space-between
     align-items: flex-start
     margin-bottom: 24px
+    @include max(767)
+      flex-direction: column
+      gap: 12px
   &-salary
     font-weight: 500
   &-address
@@ -369,30 +534,51 @@
     align-items: flex-start
     justify-content: flex-start
     gap: 24px
+    @include between(1280, 1439)
+      gap: 16px
+    @include max(767)
+      padding: 24px
+      flex-direction: column
+      margin-bottom: 36px
     &-info
       width: 77%
+      @include max(767)
+        width: 100%
     &-title
       font-size: 24px
       line-height: 48px
       padding-bottom: 24px
+      @include max(767)
+        line-height: 35px
+        font-weight: 400
     &-address
       display: flex
       align-items: center
       justify-content: flex-start
       font-size: 16px
       padding-bottom: 24.5px
+      @include between(1280, 1439)
+        font-size: 15px
       svg
         width: 24px
         height: 24px
         margin-right: 8px
         fill: #000
+        @include between(1280, 1439)
+          width: 15px
+          height: 15px
+          margin-right: 5px
     &-desc
       font-size: 16px
       opacity: 0.5
       color: #000
+      @include between(1280, 1439)
+        font-size: 14px
     &-contact
       width: 23%
       text-align: center
+      @include max(767)
+        width: 100%
     &-price
       font-weight: 500
       font-size: 36px
@@ -405,6 +591,7 @@
       font-size: 16px
       width: 100%
       margin-bottom: 16px
+      box-shadow: 0 0 2px rgba(0, 0, 0, 0.08), 0 2px 24px rgba(0, 0, 0, 0.08)
     &-phone
       span
         white-space: nowrap
@@ -414,13 +601,17 @@
         padding-bottom: 2px
       a
         white-space: nowrap
-        display: inline-block
+        display: block
         color: #000
         font-size: 16px
     &_small
       padding: 36px
       margin-bottom: 0
       flex-direction: column
+      @include between(1280, 1439)
+        padding: 20px
+      @include max(767)
+        padding: 24px
       .vakansy-detailed__card
         &-info, &-contact
           width: 100%
@@ -428,25 +619,46 @@
           font-size: 20px
           line-height: 48px
           padding-bottom: 12px
+          @include between(1280, 1439)
+            line-height: 30px
+          @include max(767)
+            font-size: 18px
+            line-height: 30px
         &-address
           padding-bottom: 12.5px
         &-contact
           display: flex
           align-items: center
           justify-content: flex-start
+          @include between(1280, 1439)
+            justify-content: space-between
+          @include max(767)
+            flex-direction: column
+            gap: 16px
         &-price
           order: 1
           font-size: 30px
           padding-bottom: 0
           margin-right: auto
+          @include between(1280, 1439)
+            font-size: 26px
+          @include max(767)
+            margin: 0 auto
         &-phone
           text-align: right
           order: 2
           margin-right: 16px
+          @include between(1280, 1439)
+            margin: 0 auto
+            text-align: center
         &-button
           width: 152px
           order: 3
           margin-bottom: 0
+          @include between(1280, 1439)
+            width: 140px
+          @include max(767)
+            width: 100%
   &__subtitle
     font-weight: 600
     font-size: 24px
@@ -457,6 +669,8 @@
     max-width: 754px
     &:last-of-type
       margin-bottom: 72px
+      @include max(767)
+        margin-bottom: 36px
     li
       display: flex
       align-items: flex-start
@@ -473,13 +687,23 @@
     align-items: stretch
     gap: 24px
     margin-bottom: 72px
+    @include max(1279)
+      flex-direction: column
   &__block
     width: 50%
     height: 282px
     border-radius: 34px
     overflow: hidden
+    @include between(1280, 1439)
+      height: 220px
+    @include max(1279)
+      width: 100%
+      border-radius: 16px
+      height: auto
   &__map
     border: 1px solid rgba(0, 0, 0, 0.12)
+    @include max(767)
+      height: 129px
   &__order
     .container
       max-width: 950px
@@ -489,6 +713,8 @@
     overflow: hidden
     position: relative
     padding: 48px 48px 58px
+    @include max(1279)
+      display: none
     &-img
       position: absolute
       top: 0
@@ -502,11 +728,12 @@
     &-button
       background-color: #fff
       padding: 16px 24px
-      display: flex
+      display: inline-flex
       align-items: center
       justify-content: center
       font-size: 18px
       font-weight: 500
+      box-shadow: 0 0 2px rgba(0, 0, 0, 0.08), 0 2px 24px rgba(0, 0, 0, 0.08)
       svg
         fill: #000
         width: 16px

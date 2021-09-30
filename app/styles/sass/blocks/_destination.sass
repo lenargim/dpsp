@@ -5,17 +5,46 @@
     align-items: center
     justify-content: space-between
     gap: 30px
+    @include between(1024, 1439)
+      gap: 50px
+    @include max(767)
+      flex-direction: column
+      justify-content: flex-start
   &__map
     border-radius: 50%
     overflow: hidden
     width: 50%
+    @include between(1024, 1439)
+      width: 45%
+    @include max(767)
+      width: 300px
+      height: 300px
+      margin: 0 auto
+    @include max(374)
+      width: 100%
+      height: auto
+      aspect-ratio: 1/1
   &__content
     width: 50%
+    @include between(1024, 1439)
+      width: 55%
+    @include max(767)
+      width: 100%
+      text-align: center
   &__title
     padding-bottom: 32px
     font-weight: 600
     font-size: 36px
     line-height: 52px
+    @include between(1024, 1439)
+      font-size: 34px
+      line-height: 48px
+      padding-bottom: 30px
+    @include max(767)
+      font-size: 28px
+      padding-bottom: 16px
   &__text
     font-size: 18px
     line-height: 32px
+    @include between(1024, 1439)
+      font-size: 16px

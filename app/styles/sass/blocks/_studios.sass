@@ -1,13 +1,24 @@
 .studios-page
   padding-bottom: 309px
+  .title
+    padding-bottom: 36px
   &__wrap
     display: grid
     grid-gap: 30px
     grid-template-columns: repeat(3, 1fr)
     grid-template-rows: auto
+    @include between(1280, 1279)
+      grid-gap: 15px
+    @include max(1279)
+      grid-template-columns: repeat(2, 1fr)
+    @include max(767)
+      grid-template-columns: 1fr
   &__search
     grid-column: 1/3
     position: relative
+    @include max(1279)
+      grid-row: 2/3
+      grid-column: 1/-1
     input
       width: 100%
       border: none
@@ -34,6 +45,10 @@
     bottom: 85px
     display: flex
     align-items: center
+    @include max(1279)
+      bottom: unset
+      grid-row: 1/2
+      grid-column: 1/-1
     div
       display: inline-block
       width: 50%
@@ -77,8 +92,15 @@
 .studios-detailed
   &__title
     display: flex
-    align-items: center
+    align-items: flex-start
     justify-content: space-between
+    padding-bottom: 24px
+    @include max(1279)
+      flex-direction: column
+      justify-content: flex-start
+      align-items: flex-start
+    h1
+      padding-bottom: 8px
   &__workhours
     font-size: 16px
     display: flex
@@ -90,7 +112,7 @@
       fill: $red
       margin-right: 10px
   &__diarections
-    background-color: $red
+    background-color: $sweet
     padding: 10px 20px
     display: flex
     align-items: center
@@ -98,6 +120,7 @@
     font-size: 14px
     font-weight: 400
     color: #000
+    margin-top: 8px
     svg
       width: 11px
       height: 14px
@@ -106,11 +129,18 @@
   &__spec
     position: relative
     padding-bottom: 106px
+    @include between(1280, 1365)
+      padding-bottom: 70px
     &-title
       padding-bottom: 24px
     &-slider
       overflow: hidden
       padding-bottom: 42px
+      @include max(767)
+        overflow: initial
+    &-item.swiper-slide
+      @include max(767)
+        width: 270px
     &-button
       position: absolute
       top: 50%
@@ -124,6 +154,8 @@
       overflow: hidden
       z-index: 2
       border: 3px solid $blue
+      @include max(1279)
+        display: none
     &-prev
       right: calc(100% + 24px)
     &-next
@@ -153,3 +185,5 @@
       color: $gray1
   .service
     padding: 70px 0 100px
+    @include max(767)
+      padding: 72px 0

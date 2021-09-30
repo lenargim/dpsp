@@ -8,6 +8,14 @@
   height: 100%
   position: absolute
   padding-top: 139px
+  @include between(1280, 1439)
+    padding-top: 120px
+  @include max(767)
+    background-color: #fff
+    padding-top: 88px
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.12), 0 0 96px rgba(0, 0, 0, 0.16)
+    .container
+      padding: 0
   &.active
     z-index: 2
     display: block
@@ -20,6 +28,8 @@
     border-radius: 50px
     padding: 4px
     margin-bottom: 16px
+    @include max(767)
+      display: none
     &-field
       padding: 8px 20px
       position: relative
@@ -65,6 +75,14 @@
     background: #fff
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.12), 0 0 96px rgba(0, 0, 0, 0.16)
     border-radius: 34px
+    @include max(767)
+      border-radius: 34px 34px 0 0
+      position: fixed
+      bottom: 0
+      height: 85vh
+      padding: 24px
+      width: 100vw
+      overflow-y: auto
     &:first-of-type
       display: block
     &-title
@@ -77,6 +95,11 @@
       flex-direction: column
       justify-content: flex-start
       align-items: center
+      @include max(767)
+        align-items: stretch
+        position: relative
+        min-height: 70vh
+        padding-bottom: 80px
     &-row
       width: 100%
       display: flex
@@ -93,11 +116,18 @@
       padding: 16px 52px
       box-shadow: 0 0 2px rgba(0, 0, 0, 0.08), 0 2px 24px rgba(0, 0, 0, 0.08)
       font-size: 16px
+      @include max(767)
+        position: absolute
+        bottom: 0
+        right: 0
     &-img
       width: 90px
       height: 90px
       border-radius: 12px
       margin-right: 16px
+      @include max(767)
+        width: 72px
+        height: 72px
     &-choose
       width: 100%
       padding-bottom: 16px
@@ -122,6 +152,9 @@
       &_nocheckbox
         & label::before, label::after
           content: none
+        .register__detail-img
+          width: 90px
+          height: 90px
       &:last-of-type
         padding-bottom: 0
       &-box
@@ -130,6 +163,8 @@
         justify-content: flex-start
         position: relative
         cursor: pointer
+        @include max(767)
+          padding-right: 30px
         &::before
           content: ''
           width: 20px
@@ -153,12 +188,17 @@
       align-items: flex-start
       position: relative
       width: 100%
+      @include max(767)
+        flex-direction: column
     &-time
       width: 50%
       padding-left: 24px
       display: none
       &.active
         display: block
+      @include max(767)
+        width: 100%
+        padding: 24px 0 0
       &-title
         padding-bottom: 24px
         font-weight: 600
@@ -171,6 +211,12 @@
         justify-content: flex-start
         align-items: flex-start
         flex-wrap: wrap
+        @include max(767)
+          display: grid
+          grid-template-rows: auto
+          grid-template-columns: repeat(4, 1fr)
+          grid-gap: 12px
+          text-align: center
       &-item
         width: 95px
         height: 36px
@@ -181,6 +227,8 @@
         border: 1px solid #EDEDED
         border-radius: 4px
         cursor: pointer
+        @include max(767)
+          width: unset
         &.disabled
           background: #EDEDED
           border: 1px solid #EDEDED
@@ -194,3 +242,19 @@
         height: 0
         position: absolute
         z-index: -1
+    &-back
+      display: none
+      align-items: center
+      justify-content: flex-start
+      font-size: 16px
+      position: absolute
+      left: 0
+      bottom: 15.5px
+      @include max(767)
+        display: flex
+      svg
+        transform: rotate(180deg)
+        fill: $black
+        width: 16px
+        height: 16px
+        margin-right: 8px

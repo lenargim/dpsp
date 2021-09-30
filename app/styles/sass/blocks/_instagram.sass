@@ -1,18 +1,30 @@
 .instagram
   padding-bottom: 164px
+  @include max(1279)
+    padding-bottom: 72px
   &__container
     width: 1050px
     margin: 0 auto
     display: flex
     align-items: stretch
     justify-content: space-between
+    @include max(1279)
+      flex-direction: column
+      align-items: center
+      justify-content: flex-start
+      gap: 12px
+      width: 100%
+    @include max(1279)
+      padding: 0 16px
   &__gallery
     width: 558px
-    display: flex
-    justify-content: flex-start
-    align-items: flex-start
-    flex-wrap: wrap
-    gap: 24px
+    display: grid
+    grid-template-columns: repeat(3, 1fr)
+    grid-template-rows: auto
+    grid-gap: 24px
+    @include max(767)
+      width: 100%
+      gap: 24px 12px
   &__img
     border-radius: 24px
     overflow: hidden
@@ -23,6 +35,9 @@
     text-align: center
     width: 442px
     position: relative
+    @include max(1279)
+      width: 100%
+      padding: 36px 41px 49px
     &::after
       content: ''
       position: absolute

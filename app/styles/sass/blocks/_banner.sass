@@ -1,31 +1,56 @@
 .banner
   background: url("../images/dist/bg.png") no-repeat
-  background-size: 100%
+  background-size: 100% 100%
   height: 100vh
   overflow: hidden
   padding-top: 116px
   margin-bottom: 72px
+  @include between(1280, 1439)
+    padding-top: 100px
+    margin-bottom: 50px
+  @include max(1279)
+    padding-top: 73px
+    margin-bottom: 48px
+  @include max(1279)
+    height: auto
+    min-height: 100vh
   &__info
     padding-bottom: 35px
-    display: flex
-    align-items: stretch
-    justify-content: center
+    display: grid
+    margin: 0 auto
     position: relative
     z-index: 1
+    grid-template-rows: auto
+    grid-template-columns: repeat(4, 1fr)
+    grid-gap: 30px
+    width: 950px
+    @include between(1280, 1439)
+      padding-bottom: 30px
+    @include max(1279)
+      width: 100%
+      grid-template-columns: repeat(2, 1fr)
+      grid-gap: 30px 12px
+      padding-bottom: 58px
     &-item
-      margin: 0 15px
       padding-bottom: 16px
       border-bottom: 1px solid rgba(24, 25, 31, 0.08)
+      @include max(1279)
+        padding-bottom: 12px
     &-digit
       font-weight: 300
       font-size: 48px
-      line-height: 64px
       font-feature-settings: 'liga' off
       color: #18191F
+      @include between(1366, 1439)
+        font-size: 40px
+      @include max(1279)
+        font-size: 36px
     span
       font-weight: 300
       font-size: 16px
       color: #18191F
+      @include max(1279)
+        font-size: 14px
   &__wrap
     display: flex
     align-items: flex-start
@@ -34,20 +59,50 @@
     width: 608px
     position: relative
     z-index: 1
+    @include between(1024, 1279)
+      margin: 0 auto
+    @include max(1279)
+      width: calc(100% + 6px)
     h1
       font-size: 36px
       font-weight: 400
       padding-bottom: 10vh
+      @include between(1366, 1439)
+        font-size: 30px
+      @include between(1024, 1279)
+        text-align: center
+      @include max(1279)
+        font-size: 24px
+        padding-bottom: 1em
+        line-height: 35px
   &__schedule
     display: flex
     align-items: center
     justify-content: flex-start
-    padding-left: 24px
-    border-left: 6px solid $red
     margin-bottom: 39px
+    @include between(1024, 1279)
+      margin: 0 auto 60px
+    @include max(1279)
+      margin-bottom: 47px
     .black
       font-size: 24px
+      padding-left: 30px
       margin-right: 36px
+      position: relative
+      &::before
+        content: ''
+        width: 6px
+        top: 0
+        bottom: 0
+        left: 0
+        position: absolute
+        background-color: $red
+        border-radius: 10px
+      @include between(1280, 1439)
+        font-size: 22px
+      @include max(1279)
+        font-size: 16px
+        margin-right: 12px
       b
         text-transform: uppercase
     .red
@@ -55,8 +110,14 @@
       font-weight: 500
       font-size: 72px
       line-height: 1
+      @include between(1280, 1439)
+        font-size: 52px
+      @include max(1279)
+        font-size: 64px
       span
         font-size: 24px
+        @include max(1279)
+          font-size: 19px
   &__button
     background-color: $red
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.08), 0 2px 24px rgba(0, 0, 0, 0.08)
@@ -64,11 +125,30 @@
     color: #fff
     font-size: 24px
     line-height: 35px
+    white-space: pre
+    @include between(1280, 1439)
+      font-size: 22px
+      padding: 12px 30px
+    @include between(1024, 1279)
+      margin: 0 auto
+    @include max(1279)
+      flex-direction: column
+      width: 100%
+      font-size: 16px
+      line-height: 23px
+      white-space: initial
+      text-align: center
+      margin-bottom: 30px
   &__img
     position: absolute
     bottom: 0
     right: 12vw
     z-index: 0
-    @include between(1280, 1439)
-      width: 25vw
+    @include between(1366, 1439)
       right: 10vw
+      width: 25vw
+    @include between(1280, 1365)
+      right: 8vw
+      width: 30vw
+    @include max(1279)
+      display: none

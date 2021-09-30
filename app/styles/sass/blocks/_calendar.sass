@@ -2,6 +2,10 @@
   width: 50%
   border-right: 1px solid $gray2
   position: relative
+  @include max(767)
+    width: 100%
+    border-right: none
+    border-bottom: 1px solid $gray2
 #datepicker
   visibility: hidden
   height: 0
@@ -10,6 +14,8 @@
 .qs-datepicker-container
   position: relative
   padding-right: 27px
+  @include max(767)
+    padding: 0 0 24px
 .qs-controls
   width: 100%
   position: relative

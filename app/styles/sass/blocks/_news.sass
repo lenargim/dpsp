@@ -2,6 +2,8 @@
   margin-bottom: 172px
   &__title
     padding-bottom: 51px
+    @include max(1279)
+      padding-bottom: 24px
   &__bg
     background-color: $blue
     opacity: 0.2
@@ -48,6 +50,8 @@
     background-color: #fff
     position: absolute
     top: 50%
+    @include max(1279)
+      display: none
     &-prev
       left: -71px
       transform: translateY(-50%)
@@ -55,13 +59,25 @@
       right: -71px
       transform: translateY(-50%) rotate(180deg)
       cursor: pointer
+  .swiper-horizontal>.swiper-pagination-bullets
+    @include max(1279)
+      bottom: -35px
 .news-page
   padding-bottom: 36px
+  .title
+    padding-bottom: 36px
+    @include max(1279)
+      padding-bottom: 24px
   &__wrap
     display: grid
     grid-gap: 30px
     grid-template-columns: repeat(3, 1fr)
     grid-template-rows: auto
+    @include between(768, 1279)
+      grid-template-columns: repeat(2, 1fr)
+    @include max(767)
+      grid-template-columns: 1fr
+      grid-gap: 16px
 .news-detailed
   padding-bottom: 100px
   &__wrap
@@ -69,20 +85,39 @@
     align-items: flex-start
     justify-content: flex-start
     gap: 30px
+    @include max(1279)
+      flex-direction: column
+      gap: 72px
   &__date
     display: flex
     align-items: center
     justify-content: flex-start
     padding-bottom: 12px
+    svg
+      margin-right: 4px
   &__content
     font-size: 16px
     p
       padding-bottom: 1em
   &__aside
-    display: flex
-    flex-direction: column
-    justify-content: flex-start
-    align-items: stretch
-    gap: 16px
+    display: grid
+    grid-template-rows: auto
+    grid-template-columns: 1fr
+    grid-gap: 16px
+    @include between(768, 1279)
+      grid-template-columns: repeat(2, 1fr)
+    @include max(767)
+      grid-template-columns: 1fr
     .news__item
       width: 362px
+      @include max(767)
+        width: 100%
+    &-title
+      font-weight: 600
+      font-size: 18px
+      line-height: 28px
+      padding-bottom: 16px
+      grid-column: 1/-1
+      @include max(1279)
+        font-size: 28px
+        padding-bottom: 8px

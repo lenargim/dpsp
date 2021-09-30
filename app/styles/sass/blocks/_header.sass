@@ -6,6 +6,11 @@
     position: relative
     background: url("../images/dist/bg.png") no-repeat
     background-size: 100%
+    &.open
+      background: transparent
+      z-index: 3
+      .header__bg
+        background: transparent
   &_main
     position: absolute
     left: 0
@@ -37,8 +42,18 @@
     justify-content: flex-start
     position: relative
     z-index: 2
+    @include max(1279)
+      padding: 10px 0 20px
   &__logo
     margin-right: 62px
+    @include between(1280, 1365)
+      margin-right: 30px
+    @include max(1279)
+      margin-right: auto
+      svg
+        width: 148px
+        @include max(374)
+          width: 120px
   &__city
     display: flex
     align-items: center
@@ -49,6 +64,8 @@
     border-radius: 40px
     margin-right: 24px
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.08), 0 2px 24px rgba(0, 0, 0, 0.08)
+    @include max(1279)
+      display: none
     svg
       width: 16px
       height: 19px
@@ -58,6 +75,8 @@
     display: flex
     align-items: center
     justify-content: flex-start
+    @include max(1279)
+      display: none
     &-item
       position: relative
       cursor: pointer
@@ -81,7 +100,7 @@
           left: calc(50% - 12px)
           overflow: hidden
         a
-          font-size: 400
+          font-weight: 400
   &__schedule
     display: flex
     align-items: center
@@ -92,8 +111,13 @@
     border-radius: 40px
     margin: 0 12px 0 auto
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.08), 0 2px 24px rgba(0, 0, 0, 0.08)
+    @include max(1279)
+      padding: 12px
+      font-size: 12px
     svg
       margin-right: 12.5px
+      @include max(1279)
+        margin-right: 8px
   &__lk
     display: flex
     align-items: center
@@ -102,6 +126,8 @@
     border-radius: 40px
     background-color: #fff
     padding: 4px 4px 4px 12px
+    @include max(1279)
+      display: none
     .search
       display: block
       margin-right: 19px
@@ -119,3 +145,114 @@
     border-radius: 50%
     margin-left: 8px
     cursor: pointer
+.burger
+  display: none
+  position: relative
+  justify-content: center
+  align-items: center
+  width: 40px
+  height: 40px
+  background-color: #fff
+  border-radius: 50%
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.08), 0 2px 24px rgba(0, 0, 0, 0.08)
+  &::before, &::after
+    content: ''
+    position: absolute
+    width: 17px
+    height: 2px
+    border-radius: 1px
+    display: block
+    background-color: #000
+    transform-origin: left center
+    left: calc(50% - 8.5px)
+    transition: all 0.3s ease
+  &::before
+    top: calc(50% - 6px)
+  &::after
+    bottom: calc(50% - 6px)
+  span
+    width: 17px
+    height: 2px
+    border-radius: 1px
+    display: block
+    background-color: #000
+  &.active
+    span
+      display: none
+    &::before, &::after
+      width: 20px
+      left: calc(50% - 7px)
+    &::before
+      top: calc(50% - 8px)
+      transform: rotate(45deg)
+    &::after
+      bottom: calc(50% - 8px)
+      transform: rotate(-45deg)
+  @include max(1279)
+    display: flex
+.mobile-menu
+  display: none
+  flex-direction: column
+  justify-content: flex-start
+  align-items: center
+  gap: 23px
+  width: 100vw
+  height: 100vh
+  position: absolute
+  top: 0
+  left: calc(100vw + 10px)
+  transition: all 0.3s ease
+  background-color: #fff
+  z-index: 2
+  padding-top: 76px
+  &.open
+    left: 0
+  @include max(1279)
+    display: flex
+  &__city
+    display: flex
+    align-items: center
+    justify-content: flex-start
+    background-color: #fff
+    padding: 10px 20px
+    border-radius: 40px
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.08), 0 2px 24px rgba(0, 0, 0, 0.08)
+    svg
+      width: 16px
+      height: 19px
+      fill: #000
+      margin-right: 8px
+  &__lk
+    display: flex
+    align-items: center
+    justify-content: flex-start
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.08), 0 2px 24px rgba(0, 0, 0, 0.08)
+    border-radius: 40px
+    background-color: #fff
+    padding: 4px 4px 4px 12px
+    font-weight: 300
+    .search
+      display: block
+      margin-right: 16px
+      width: 17.5px
+      height: 17.5px
+      fill: #000
+  &__user
+    display: flex
+    align-items: center
+    justify-content: center
+    background-color: $yellow
+    width: 36px
+    height: 36px
+    border-radius: 50%
+    margin-left: 8px
+  &__menu
+    display: flex
+    justify-content: flex-start
+    align-items: center
+    flex-direction: column
+    gap: 24px
+  &__item a
+    color: $black
+    font-size: 18px
+    line-height: 26px
