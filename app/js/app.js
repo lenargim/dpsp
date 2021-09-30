@@ -40,21 +40,19 @@ $(document).ready(function () {
     $('.register__detail-time-input').val(time);
   });
 
-
-
   const swiper = new Swiper('.swiper', {
     loop: true,
     speed: 400,
     spaceBetween: 30,
     effect: 'coverflow',
     setWrapperSize: true,
+    pagination: {
+      el: '.swiper-pagination',
+      type: 'bullets',
+      clickable: true
+    },
     breakpoints: {
       320: {
-        pagination: {
-          el: '.swiper-pagination',
-          type: 'bullets',
-          clickable: true
-        },
         slidesPerView: 1,
         coverflowEffect: {
           rotate: 0,
@@ -64,7 +62,6 @@ $(document).ready(function () {
         },
       },
       1024: {
-        pagination: false,
         slidesPerView: 2,
         coverflowEffect: {
           rotate: 0,
@@ -115,6 +112,10 @@ $(document).ready(function () {
     speed: 400,
     loop: true,
     watchSlidesProgress: false,
+    navigation: {
+      nextEl: '.news__button-next',
+      prevEl: '.news__button-prev',
+    },
     breakpoints: {
       320: {
         spaceBetween: 15,
@@ -138,10 +139,6 @@ $(document).ready(function () {
       1280: {
         spaceBetween: 30,
         slidesPerView: 3,
-        navigation: {
-          nextEl: '.news__button-next',
-          prevEl: '.news__button-prev',
-        },
         pagination: false,
       }
     }
@@ -280,25 +277,45 @@ $(document).ready(function () {
     }
   });
 
-  let services = new Swiper('.service__slider', {
-    speed: 400,
-    loop: true,
-    navigation: false,
-    init: true,
-    breakpoints: {
-      320: {
-        spaceBetween: 16,
-        slidesPerView: 1,
-        pagination: {
-          el: '.swiper-pagination',
-          type: 'bullets',
-          clickable: true,
-        },
-      },
-    }
-  });
+  // let services = new Swiper('.service__slider', {
+  //   speed: 400,
+  //   loop: true,
+  //   navigation: false,
+  //   init: true,
+  //   breakpoints: {
+  //     320: {
+  //       spaceBetween: 16,
+  //       slidesPerView: 1,
+  //       pagination: {
+  //         el: '.swiper-pagination',
+  //         type: 'bullets',
+  //         clickable: true,
+  //       },
+  //     },
+  //   }
+  // });
 
-  // if (window.innerWidth > 767) services.destroy();
+  function servicesInit() {
+    new Swiper('.service__slider', {
+      speed: 400,
+      loop: true,
+      navigation: false,
+      init: true,
+      breakpoints: {
+        320: {
+          spaceBetween: 16,
+          slidesPerView: 1,
+          pagination: {
+            el: '.swiper-pagination',
+            type: 'bullets',
+            clickable: true,
+          },
+        },
+      }
+    });
+  }
+
+  if (window.innerWidth < 767) servicesInit();
   // $(window).resize( function () {
   //   if (window.innerWidth > 767) {
   //     services.destroy();
