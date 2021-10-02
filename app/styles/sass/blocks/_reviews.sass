@@ -4,11 +4,17 @@
     padding-bottom: 48px
     @include max(1279)
       padding-bottom: 24px
+  &__slider.swiper
+    overflow: visible
   &__item
     position: relative
     padding-bottom: 142px
+    opacity: 1
     &.swiper-slide
+      transition: transform 0.4s ease, opacity 0.4s ease
       height: auto
+      &:not(.swiper-slide-visible)
+        opacity: 0
     &-text
       color: #18191F
       font-size: 16px
@@ -62,9 +68,9 @@
     align-items: center
     justify-content: center
     &-prev
-      right: 64px
+      right: 80px
     &-next
-      right: 0
+      right: 15px
       transform: rotate(180deg)
     @include max(1279)
       display: none

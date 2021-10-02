@@ -40,7 +40,7 @@ $(document).ready(function () {
     $('.register__detail-time-input').val(time);
   });
 
-  const swiper = new Swiper('.swiper', {
+  const actions = new Swiper('.actions__slider', {
     loop: true,
     speed: 400,
     spaceBetween: 30,
@@ -73,9 +73,10 @@ $(document).ready(function () {
     }
   });
 
-  const reviews = new Swiper('.reviews__slider', {
+  const reviews = new Swiper('.reviews__slider.swiper', {
     speed: 400,
     loop: true,
+    watchSlidesProgress: true,
     breakpoints: {
       320: {
         spaceBetween: 15,
@@ -316,29 +317,7 @@ $(document).ready(function () {
   }
 
   if (window.innerWidth < 767) servicesInit();
-  // $(window).resize( function () {
-  //   if (window.innerWidth > 767) {
-  //     services.destroy();
-  //   } else {
-  //     let services = new Swiper('.service__slider', {
-  //       speed: 400,
-  //       loop: true,
-  //       navigation: false,
-  //       init: true,
-  //       breakpoints: {
-  //         320: {
-  //           spaceBetween: 16,
-  //           slidesPerView: 1,
-  //           pagination: {
-  //             el: '.swiper-pagination',
-  //             type: 'bullets',
-  //             clickable: true,
-  //           },
-  //         },
-  //       }
-  //     });
-  //   }
-  // });
+
 
 
   $('.open-vakansy').on('click', function () {
@@ -358,5 +337,22 @@ $(document).ready(function () {
     $(this).toggleClass('active');
     $('.mobile-menu').toggleClass('open');
     $('.header').toggleClass('open');
+  });
+
+
+
+  $('.service__item-buttonbox button').on('click', function () {
+    $("html, body").animate({scrollTop: 0}, 400);
+    $('main').toggleClass('blur');
+    $('header').toggleClass('blur');
+    $('.register').toggleClass('active');
   })
+});
+
+$('.studios-detailed__diarections').on('click', function(e) {
+  e.preventDefault();
+  let anchor = $(this).attr('href');
+  $('html, body').animate({
+    scrollTop:  $(anchor).offset().top - 30
+  }, 600);
 });

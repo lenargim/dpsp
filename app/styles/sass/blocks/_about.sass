@@ -701,7 +701,21 @@
       border-radius: 16px
       height: auto
   &__map
+    position: relative
     border: 1px solid rgba(0, 0, 0, 0.12)
+    &-button
+      position: absolute
+      background: #fff
+      box-shadow: 0 0 2px rgba(0, 0, 0, 0.08), 0 2px 24px rgba(0, 0, 0, 0.08)
+      color: $black
+      padding: 16px 24px
+      left: 50%
+      bottom: 36px
+      transform: translateX(-50%)
+      z-index: 3
+    @include between(768, 1279)
+      height: 20vh
+      min-height: 250px
     @include max(767)
       height: 129px
   &__order
