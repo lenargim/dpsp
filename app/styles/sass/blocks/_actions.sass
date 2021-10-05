@@ -2,6 +2,8 @@
   padding-bottom: 100px
   .title
     padding-bottom: 24px
+  .container
+    max-width: 90vw
   &__slider
     &.swiper
       margin: 0 auto
@@ -42,6 +44,26 @@
       @include max(1279)
         font-size: 14px
         line-height: 1.5
+    &-button
+      display: flex
+      align-items: center
+      justify-content: center
+      border-radius: 50%
+      background-color: #fff
+      box-shadow: 0 0 2px rgba(0, 0, 0, 0.08), 0 2px 24px rgba(0, 0, 0, 0.08)
+      width: 58px
+      height: 58px
+      position: absolute
+      top: 180px
+      z-index: 2
+      cursor: pointer
+      @include max(1023)
+        display: none
+    &-prev
+      left: 0
+    &-next
+      right: 0
+      transform: rotate(180deg)
   .swiper-horizontal>.swiper-pagination-bullets
     @include max(1279)
       bottom: -35px

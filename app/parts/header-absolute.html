@@ -26,7 +26,19 @@
 	<div class="container">
 		<div class="header__wrap">
 			<a href="/" class="header__logo"><!--#include virtual="/images/src/svg/logo.svg" --></a>
-			<div class="header__city"><!--#include virtual="/images/src/svg/geo.svg" --><span>Казань</span></div>
+			<div class="header__city">
+				<div class="header__city-main">
+					<!--#include virtual="/images/src/svg/geo.svg" -->
+					<span>Казань</span>
+				</div>
+				<div class="header__city-confirm">
+					<div class="header__city-actual">Вы находитесь в городе <span class="red">Казань</span></div>
+					<div class="header__city-buttons">
+						<button class="header__city-button header__city-true">Да, верно</button>
+						<button class="header__city-button header__city-false">Выбрать другой</button>
+					</div>
+				</div>
+			</div>
 			<nav class="header__menu">
 				<li class="header__menu-item header__menu-studios"><a href="studios">Студии</a></li>
 				<li class="header__menu-item header__menu-services"><a href="services">Услуги</a></li>
@@ -50,7 +62,19 @@
 	</div>
 </header>
 <div class="mobile-menu">
-	<div class="mobile-menu__city"><!--#include virtual="/images/src/svg/geo.svg" --><span>Казань</span></div>
+	<div class="mobile-menu__city">
+		<div class="header__city-main">
+			<!--#include virtual="/images/src/svg/geo.svg" -->
+			<span>Казань</span>
+		</div>
+		<div class="header__city-confirm">
+			<div class="header__city-actual">Вы находитесь в городе <span class="red">Казань</span></div>
+			<div class="header__city-buttons">
+				<button class="header__city-button header__city-true">Да, верно</button>
+				<button class="header__city-button header__city-false">Выбрать другой</button>
+			</div>
+		</div>
+	</div>
 	<div class="mobile-menu__lk">
 		<!--#include virtual="/images/src/svg/search.svg" -->
 		<span>Личный кабинет</span>
