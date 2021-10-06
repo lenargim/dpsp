@@ -44,6 +44,7 @@
 		"webpack-stream": "^7.0.0"
 	},
 	"dependencies": {
+		"@fancyapps/ui": "^4.0.5",
 		"jquery": "^3.6.0",
 		"jquery-mask-plugin": "^1.14.16",
 		"js-datepicker": "^5.18.0"

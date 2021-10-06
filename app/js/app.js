@@ -1,9 +1,27 @@
 import 'jquery';
 import 'jquery-mask-plugin'
 import datepicker from 'js-datepicker'
+import { Fancybox } from "@fancyapps/ui";
 
 $(document).ready(function () {
   $('.tel').mask('+7(Z00) 000-00-00', {translation: {'Z': {pattern: /[0-79]/}}});
+
+
+  Fancybox.bind("#gallery a", {
+    groupAll : true, // Group all items
+    Carousel: {
+      Navigation: {
+        prevTpl:
+          '<svg width="18" height="16" viewBox="0 0 18 16" fill="none" xmlns="http://www.w3.org/2000/svg">\n' +
+          '<path d="M8.53187 0.259107C8.85633 0.578996 8.88676 1.08447 8.62078 1.43913L8.54089 1.53187L3.05 7.1L17.1 7.1C17.5971 7.1 18 7.50294 18 8C18 8.45882 17.6567 8.83745 17.2129 8.89299L17.1 8.9H3.05L8.54089 14.4681C8.86078 14.7926 8.88404 15.2984 8.61306 15.6493L8.53187 15.7409C8.20741 16.0608 7.70155 16.084 7.3507 15.8131L7.25911 15.7319L0.259106 8.63187C-0.0575809 8.31066 -0.0839691 7.81089 0.179935 7.45992L0.259106 7.36813L7.25911 0.268133C7.60808 -0.0858223 8.17791 -0.0898636 8.53187 0.259107Z" fill="black"/>\n' +
+          '</svg>',
+        nextTpl:
+          '<svg width="18" height="16" viewBox="0 0 18 16" fill="none" xmlns="http://www.w3.org/2000/svg">\n' +
+          '<path d="M9.46813 0.259107C9.14367 0.578996 9.11324 1.08447 9.37922 1.43913L9.45911 1.53187L14.95 7.1L0.9 7.1C0.402944 7.1 0 7.50294 0 8C0 8.45882 0.343337 8.83745 0.787106 8.89299L0.9 8.9H14.95L9.45911 14.4681C9.13922 14.7926 9.11596 15.2984 9.38694 15.6493L9.46813 15.7409C9.79259 16.0608 10.2985 16.084 10.6493 15.8131L10.7409 15.7319L17.7409 8.63187C18.0576 8.31066 18.084 7.81089 17.8201 7.45992L17.7409 7.36813L10.7409 0.268133C10.3919 -0.0858223 9.82209 -0.0898636 9.46813 0.259107Z" fill="black"/>\n' +
+          '</svg>',
+      },
+    },
+  });
 
   let d = new Date();
 
@@ -149,6 +167,81 @@ $(document).ready(function () {
       }
     }
   });
+
+  function galleryInit() {
+    new Swiper('.slider__wrap', {
+      speed: 400,
+      loop: true,
+      watchSlidesProgress: false,
+      spaceBetween: 15,
+      navigation: false,
+      slidesPerView: 1,
+      pagination: {
+        el: '.swiper-pagination',
+        type: 'bullets',
+        clickable: true
+      },
+    });
+  }
+  let myGallery = undefined;
+  //if (window.innerWidth < 767) galleryInit();
+
+  function initGallery() {
+    var screenWidth = $(window).width();
+    if(screenWidth < 768 && myGallery == undefined) {
+      myGallery = new Swiper('.slider__wrap', {
+        speed: 400,
+        loop: true,
+        watchSlidesProgress: false,
+        spaceBetween: 15,
+        navigation: false,
+        slidesPerView: 1,
+        pagination: {
+          el: '.swiper-pagination',
+          type: 'bullets',
+          clickable: true
+        },
+      });
+    } else if (screenWidth > 768 && myGallery != undefined) {
+      myGallery.destroy();
+      myGallery = undefined;
+      jQuery('.slider__wrap .swiper-wrapper').removeAttr('style');
+      jQuery('.slider__wrap .swiper-slide').removeAttr('style');
+    }
+  }
+
+  let myServices = undefined;
+  function initServices() {
+    var screenWidth = $(window).width();
+    if(screenWidth < 768 && myServices == undefined) {
+      myServices = new Swiper('.service__slider', {
+        speed: 400,
+        loop: true,
+        navigation: false,
+        init: true,
+        spaceBetween: 16,
+        slidesPerView: 1,
+        pagination: {
+          el: '.swiper-pagination',
+          type: 'bullets',
+          clickable: true,
+        },
+      });
+    } else if (screenWidth > 768 && myServices != undefined) {
+      myServices.destroy();
+      myServices = undefined;
+      jQuery('.service__slider .swiper-wrapper').removeAttr('style');
+      jQuery('.service__slider .swiper-slide').removeAttr('style');
+    }
+  }
+
+  $(window).on('resize', function(){
+    initGallery();
+    initServices();
+  });
+  initGallery();
+  initServices();
+
 
   let select = $('.select');
 
@@ -312,30 +405,6 @@ $(document).ready(function () {
       }
     }
   });
-
-  function servicesInit() {
-    new Swiper('.service__slider', {
-      speed: 400,
-      loop: true,
-      navigation: false,
-      init: true,
-      breakpoints: {
-        320: {
-          spaceBetween: 16,
-          slidesPerView: 1,
-          pagination: {
-            el: '.swiper-pagination',
-            type: 'bullets',
-            clickable: true,
-          },
-        },
-      }
-    });
-  }
-
-  if (window.innerWidth < 767) servicesInit();
-
-
 
   $('.open-vakansy').on('click', function () {
     $('.overlay-vakansy').addClass('active');

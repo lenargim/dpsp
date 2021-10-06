@@ -172,11 +172,15 @@
       margin-right: 11px
   &__spec
     position: relative
-    padding-bottom: 106px
+    padding: 300px 0 106px
+    background: #C8EFF4
+    border-radius: 200px 0
     @include between(1280, 1365)
       padding-bottom: 70px
-    &-title
+    h2.title
       padding-bottom: 24px
+      @include max(767)
+        text-align: left
     &-slider
       overflow: hidden
       padding-bottom: 42px
@@ -190,6 +194,7 @@
       top: 50%
       cursor: pointer
       width: 58px
+      background-color: #fff
       height: 58px
       display: flex
       align-items: center
@@ -231,3 +236,110 @@
     padding: 70px 0 100px
     @include max(767)
       padding: 72px 0
+    &__title
+      @include max(767)
+        text-align: left
+.slider
+  padding-bottom: 72px
+  margin-bottom: -300px
+  position: relative
+  z-index: 1
+  &__wrap .swiper-wrapper
+    @include min(768)
+      display: grid
+      grid-template-columns: repeat(4, 1fr)
+      grid-row: auto
+      grid-gap: 12px
+      position: relative
+  &__img
+    border: 1px solid rgba(11, 23, 35, 0.04)
+    cursor: initial
+    @include min(768)
+      &:nth-of-type(1)
+        grid-column: 1/3
+        grid-row: 1/3
+        border-radius: 16px 0 0 16px
+      &:nth-of-type(3)
+        border-radius: 0 16px 0 0
+      &:nth-of-type(5)
+        border-radius: 0 0 16px 0
+    @include max(767)
+      border-radius: 16px
+  &__more
+    position: absolute
+    cursor: pointer
+    padding: 10px 20px
+    background: #fff
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.08), 0 2px 24px rgba(0, 0, 0, 0.08)
+    border-radius: 100px
+    display: flex
+    align-items: center
+    justify-content: center
+    right: 27px
+    bottom: 12px
+    z-index: 1
+    svg
+      margin-right: 8px
+  .swiper-pagination
+    @include min(768)
+      display: none
+  .swiper-horizontal>.swiper-pagination-bullets
+    bottom: -35px
+    @include min(768)
+      display: none
+  .swiper-horizontal>.swiper-pagination-bullets
+    .swiper-pagination-bullet
+      background-color: #fff
+      opacity: 0.4
+    .swiper-pagination-bullet-active
+      opacity: 1
+
+.fancybox
+  &__counter
+    display: none
+  &__container
+    .fancybox__backdrop
+      background-color: rgba(0, 0, 0, 0.6)
+    .fancybox__thumbs .carousel__slide
+      padding: 8px 6px
+      width: 94px
+      height: 94px
+      .fancybox__thumb::after
+        border: 3px solid #fff
+  &__button
+    &--zoom, &--slideshow, &--fullscreen, &--thumbs
+      &.carousel__button
+        display: none
+    &--close
+      &.carousel__button
+        width: 52px
+        height: 52px
+        background-color: #fff
+        position: absolute
+        right: 40px
+        top: 64px
+        @include max(767)
+          top: 48px
+          right: 8px
+        svg
+          stroke: $black
+  &__nav .carousel__button
+    width: 58px
+    height: 58px
+    background-color: #fff
+    border-radius: 50%
+    display: flex
+    align-items: center
+    justify-content: center
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.08), 0 2px 24px rgba(0, 0, 0, 0.08)
+    @include max(767)
+      display: none
+    svg
+      fill: $black
+      width: auto
+      height: auto
+      stroke: none
+  &__viewport
+    .fancybox__content
+      border-radius: 24px
+      overflow: hidden
