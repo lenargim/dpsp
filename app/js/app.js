@@ -18,7 +18,7 @@ $(document).ready(function () {
     customDays: ['ПН', 'ВТ', 'СР', 'ЧТ', 'ПТ', 'СБ', 'ВС'],
     customMonths: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
     formatter: (input, date, instance) => {
-      const options = {year: 'numeric', month: 'numeric', day: 'numeric'};
+      const options = { month: 'long', day: 'numeric'};
       const value = date.toLocaleDateString('ru-RU', options);
       input.value = value
     },
@@ -173,7 +173,11 @@ $(document).ready(function () {
 
   $('.modal__close').on('click', function () {
     $('.overlay').removeClass('active');
-    $('.modal').removeClass('active')
+    $('.modal').removeClass('active');
+    $('.modal-thx__box-desc').text('');
+    $('.register__detail-time').removeClass('active');
+    $('.register__detail-time-item').removeClass('active');
+    $('.register__mainform-field:first-of-type').click()
   });
 
   $('.open-register').on('click', function () {
@@ -195,6 +199,11 @@ $(document).ready(function () {
           let mainInput = $('.register__mainform').find(`input[name=${name}]`);
           mainInput.val(val);
         }
+      } else if(type == 'checkbox'  ) {
+        if ( $(this).prop('checked') ) {
+          let mainInput = $('.register__mainform').find(`input[name=${name}]`);
+          mainInput.val() == '' ? mainInput.val(val) : mainInput.val(mainInput.val() + `, ${val}`)
+        }
       } else {
         let mainInput = $('.register__mainform').find(`input[name=${name}]`);
         mainInput.val() == '' ? mainInput.val(val) : mainInput.val(mainInput.val() + `, ${val}`)
@@ -211,11 +220,32 @@ $(document).ready(function () {
     $('.register__detail').hide();
     let date = form.find('#datepicker').val();
     let time = form.find('.register__detail-time-input').val();
-    $('#mainform-time').val(date+' '+time);
+    $('#mainform-time').val(date+' в '+time);
     form.find('active').removeClass('active');
-    form.find('qs-active').removeClass('qs-active')
+    form.find('qs-active').removeClass('qs-active');
     $('.register__mainform-field.active').removeClass('active');
-    //$('.blur').removeClass('blur');
+    $('.register__mainform').submit()
+  });
+
+  $('.register__mainform').on('submit', function (event) {
+    $('.blur').removeClass('blur');
+    $('header').removeClass('blur');
+    $('.register').removeClass('active');
+    let array = $( this ).serializeArray();
+    let name = array[0].value.substring(0,array[0].value.indexOf(","));
+    let address = array[1].value;
+    let service = array[2].value;
+    let worker = array[3].value;
+    let date = array[4].value;
+    let box = $('.modal-thx');
+    box.find('.modal-thx__name').text(name);
+    box.find('.worker').text(worker);
+    box.find('.service').text(service);
+    box.find('.date').text(date);
+    box.find('.address').text(address);
+    event.preventDefault();
+    $('.overlay-thx').addClass('active');
+    box.addClass('active')
   });
 
   $('.register__detail-back').one('click', function () {

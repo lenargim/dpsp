@@ -8,9 +8,8 @@
   background: rgba(0, 0, 0, 0.4)
   display: none
   overflow-y: auto
-  padding: 50px
   @include max(767)
-    padding: 50px 16px 16px
+    padding: 16px
   &-vakansy
     padding-top: 200px
   &.active
@@ -20,6 +19,7 @@
     flex-direction: column
     z-index: 10
 .modal
+  margin: 30px auto
   z-index: -1
   display: none
   border-radius: 24px
@@ -32,7 +32,7 @@
     padding: 25px
   @include max(767)
     width: 100%
-    max-height: 95vh
+    margin-top: 200px
     overflow: visible
     padding: 24px
   .required
@@ -99,6 +99,10 @@
   &__wrap
     position: relative
     margin: 10px
+    .modal__close
+      top: 30px
+      @include max(767)
+        top: 130px
     @include max(767)
       margin: 0
       width: 100%
@@ -153,6 +157,8 @@
       &::after
         content: '*'
         color: #E64646
+.modal-vakansy
+  margin-top: 12px
 .modal-vakansy-head.vakansy-detailed__block
   position: relative
   width: 558px
@@ -245,3 +251,63 @@
     font-size: 24px
     line-height: 35px
     color: #66AFD9
+.modal-thx
+  @include max(767)
+    padding: 16px
+  &__wrap
+    max-height: 85vh
+  &__img
+    margin: 0 auto 24px
+    display: flex
+    justify-content: center
+    align-items: flex-start
+    width: 200px
+    height: 200px
+    svg
+      width: 100%
+      height: 100%
+    @include between(1280, 1439)
+      width: 100px
+      height: 100px
+    @include max(767)
+      width: 150px
+      height: 150px
+      margin-bottom: 20px
+  &__title
+    text-align: center
+    font-weight: 600
+    font-size: 24px
+    line-height: 35px
+    color: $black
+    padding-bottom: 24px
+    @include max(767)
+      letter-spacing: -0.24px
+  &__box
+    padding: 24px
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12)
+    border-radius: 12px
+    &-title
+      color: #4C4C58
+      padding-bottom: 4px
+      font-size: 14px
+      @include between(1280, 1439)
+        font-size: 12px
+        line-height: 14px
+      @include max(767)
+        font-size: 12px
+        line-height: 14px
+    &-desc
+      font-weight: 600
+      font-size: 18px
+      line-height: 28px
+      padding-bottom: 16px
+      &:last-of-type
+        padding-bottom: 0
+      @include between(1280, 1439)
+        font-size: 16px
+        padding-bottom: 12px
+      @include max(767)
+        font-weight: 500
+        font-size: 14px
+        line-height: 18px
+        letter-spacing: -0.154px
