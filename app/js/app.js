@@ -478,7 +478,11 @@ $(document).ready(function () {
       $(this).addClass('active');
       let index = $(this).index();
       $('.studios-page__wrap').removeClass('open');
-      $('.studios-page__wrap').eq(index).addClass('open')
+      $('.studios-page__wrap').eq(index).addClass('open');
     }
+  });
+
+  $('.about-contacts__city-title').on('click', function () {
+    $(this).parent().toggleClass('open');
   });
 });

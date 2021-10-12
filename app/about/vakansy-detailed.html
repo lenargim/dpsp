@@ -56,10 +56,38 @@
       <li>Соблюдение санитарно-противоэпидемического режима.</li>
     </ul>
     <div class="vakansy-detailed__blocks">
-      <div class="vakansy-detailed__map vakansy-detailed__block">
-        <a href="https://yandex.ru/maps/213/moscow/house/komsomolskiy_prospekt_13/Z04Ycw9pS0YOQFtvfXtycXxrYg==/?ll=37.593146%2C55.729730&z=15" target="_blank" class="vakansy-detailed__map-button button">Смотреть на карте</a>
-        <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Ad537280b2cbb49fd7f454785675f8a9705ccd011db336046eb800e5176d59f9f&amp;source=constructor"
-                width="100%" height="100%" frameborder="0"></iframe>
+      <script src="https://api-maps.yandex.ru/2.1/?apikey=f23778e3-4bf9-42c8-b7fa-87e8712c323e&lang=ru_RU"
+              type="text/javascript">
+      </script>
+      <script>
+        // Динамический адрес
+        let address = 'Казань Спартаковская 12';
+        ymaps.ready(init);
+        function init() {
+          var myMap = new ymaps.Map('map', {
+            center: [55.753994, 37.622093],
+            zoom: 10,
+            controls: []
+          });
+          ymaps.geocode(address, {
+            results: 1
+          }).then(function (res) {
+            var firstGeoObject = res.geoObjects.get(0),
+              bounds = firstGeoObject.properties.get('boundedBy');
+            firstGeoObject.options.set('preset', 'islands#darkBlueDotIconWithCaption');
+            // Получаем строку с адресом и выводим в иконке геообъекта.
+            firstGeoObject.properties.set('iconCaption', firstGeoObject.getAddressLine());
+            myMap.geoObjects.add(firstGeoObject);
+            myMap.setBounds(bounds, {
+              checkZoomRange: true
+            });
+            document.getElementById('change-link').href = `https://yandex.ru/maps/?text={${address}`
+          });
+        }
+      </script>
+      <div class="vakansy-detailed__map vakansy-detailed__block" id="map">
+        <a href="/"
+           target="_blank" class="vakansy-detailed__map-button button" id="change-link">Смотреть на карте</a>
       </div>
       <div class="vakansy-detailed__block vakansy-detailed__card vakansy-detailed__card_small">
         <div class="vakansy-detailed__card-info">
@@ -89,7 +117,8 @@
           <span>Оставить заявку</span>
           <!--#include virtual="/images/dist/svg/arrow-r.svg" -->
         </div>
-        <div class="vakansy-detailed__box-img img"><img src="images/dist/vakansy-order.png" alt="Если Вы не нашли нужной вакансии, оставьте заявку"></div>
+        <div class="vakansy-detailed__box-img img"><img src="images/dist/vakansy-order.png"
+                                                        alt="Если Вы не нашли нужной вакансии, оставьте заявку"></div>
       </div>
     </div>
   </section>
@@ -118,7 +147,8 @@
         </div>
         <div class="modal__row">
           <label class="label" for="vakansy-position">Вакансия</label>
-          <input type="text" id="vakansy-position" name="position" class="input" readonly value="Администратор в лабораторию, м.Нагатинская">
+          <input type="text" id="vakansy-position" name="position" class="input" readonly
+                 value="Администратор в лабораторию, м.Нагатинская">
         </div>
         <div class="modal__row">
           <label class="label" for="vakansy-phone">Телефон <span class="required">*</span></label>
@@ -126,7 +156,8 @@
         </div>
         <div class="modal__checkbox">
           <input type="checkbox" class="checkbox" id="modal-checkbox">
-          <label for="modal-checkbox"><span>Я даю свое согласие на</span> <a href="#" class="policy"> обработку персональных данных</a></label>
+          <label for="modal-checkbox"><span>Я даю свое согласие на</span> <a href="#" class="policy"> обработку
+            персональных данных</a></label>
         </div>
         <input type="submit" class="modal__submit button" value="Отправить">
       </form>

@@ -376,49 +376,86 @@
     a
       color: #000
 .about-contacts
-  &__wrap
-    display: grid
-    grid-template-rows: auto
-    grid-template-columns: repeat(3, 1fr)
-    grid-gap: 30px
-    padding-bottom: 732px
-    @include between(1024, 1279)
-      grid-gap: 16px
-    @include max(1023)
-      grid-template-columns: repeat(2, 1fr)
-    @include max(767)
-      grid-template-columns: 1fr
-      grid-gap: 16px
-  &__box
+  &__quality
     background-color: #fff
+    padding: 24px
+    display: flex
+    align-items: stretch
+    justify-content: flex-start
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.08), 0 2px 24px rgba(0, 0, 0, 0.08)
     border-radius: 12px
-    padding: 24px
-    @include max(374)
-      padding: 16px
-  &__img
-    width: 50px
-    height: 50px
-    border-radius: 50%
-    background-color: $sweet
-    display: flex
-    align-items: center
-    justify-content: center
-    margin-bottom: 16px
-    svg
-      width: 24px
-      height: 24px
-      fill: $red
-  &__title
-    color: $gray1
-  &__connect
-    display: block
+    margin-bottom: 72px
+    gap: 24px
+    @include max(767)
+      flex-direction: column
+      align-items: flex-start
+    &-title
+      font-size: 14px
+      color: $gray1
+    &-link
+      font-size: 18px
+      line-height: 26px
+      color: $black
+    &-img
+      background-color: $sweet
+      border-radius: 50%
+      width: 50px
+      height: 50px
+      display: flex
+      align-items: center
+      justify-content: center
+  &__country
     font-size: 18px
     line-height: 26px
-    color: #000
-    margin-bottom: 16px
-    &:last-of-type
+    background: #F9F9F9
+    padding: 8px 12px
+    margin-bottom: 24px
+  &__cities
+    margin-bottom: 72px
+  &__city
+    border-bottom: 1px solid $gray2
+    margin-bottom: 24px
+    &:last-child
+      border-bottom: none
       margin-bottom: 0
+    &-title
+      position: relative
+      font-weight: 600
+      font-size: 24px
+      line-height: 35px
+      color: $black
+      display: flex
+      align-items: center
+      justify-content: flex-start
+      margin-bottom: 16px
+      cursor: pointer
+      &::after
+        content: ''
+        transform-origin: center center
+        border-left: 2px solid $black
+        border-top: 2px solid $black
+        width: 10px
+        height: 10px
+        transform: rotate(-135deg)
+        margin-left: 13px
+        transition: all 0.3s ease
+    &-addresses
+      display: none
+      grid-template-rows: auto
+      grid-template-columns: repeat(3, 1fr)
+      grid-gap: 30px
+      transition: all 0.3s ease
+      padding-bottom: 24px
+      @include between(768, 1023)
+        grid-template-columns: repeat(2, 1fr)
+      @include max(767)
+        grid-template-columns: 1fr
+    &.open
+      .about-contacts__city-title:after
+        transform: rotate(45deg)
+      .about-contacts__city-addresses
+        display: grid
+
 .about-vakansy
   padding-bottom: 347px
   @include max(1279)
