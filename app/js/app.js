@@ -427,12 +427,13 @@ $(document).ready(function () {
 
 
 
-  $('.service__item-buttonbox button').on('click', function () {
+  $('.service__item-buttonbox button, .service-banner__button').on('click', function (e) {
+    e.preventDefault();
     $("html, body").animate({scrollTop: 0}, 400);
     $('main').toggleClass('blur');
     $('header').toggleClass('blur');
     $('.register').toggleClass('active');
-  })
+  });
 
   $('.studios-detailed__diarections').on('click', function(e) {
     e.preventDefault();
