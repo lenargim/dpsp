@@ -13,17 +13,15 @@
       </div>
       <div class="modal__row">
         <div class="select select_city">
-          <div class="label select__title">Город</div>
+          <label for="city-modal" class="label select__title">Город</label>
           <div class="select__content">
-            <input value="Казань" id="City0" class="select__input" type="radio" name="City" checked />
-            <label for="City0" class="select__label">Казань</label>
-            <input value="Москва" id="City1" class="select__input" type="radio" name="City" />
-            <label for="City1" class="select__label">Москва</label>
-            <input value="Зеленодольск" id="City2" class="select__input" type="radio" name="City" />
-            <label for="City2" class="select__label">Зеленодольск</label>
-            <input value="Санкт-Петербург" id="City3" class="select__input" type="radio" name="City" />
-            <label for="City3" class="select__label">Санкт-Петербург</label>
+            <input type="text" id="city-modal" list="cities-callback" class="input">
           </div>
+          <datalist id="cities-callback">
+            <option value="Казань">
+            <option value="Москва">
+            <option value="Санкт-Петербург">
+          </datalist>
         </div>
       </div>
       <div class="modal__row">
@@ -115,6 +113,15 @@
         <div class="modal-thx__box-title">Где?</div>
         <div class="modal-thx__box-desc address"></div>
       </div>
+    </div>
+  </div>
+</div>
+<div class="overlay overlay-send">
+  <div class="modal modal-send">
+    <div class="modal__close"></div>
+    <div class="modal-send__wrap">
+      <div class="modal-send__title">Заявка отправлена!</div>
+      <div class="modal-send__desc">Администратор студии скоро свяжется с вами.</div>
     </div>
   </div>
 </div>

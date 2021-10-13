@@ -55,6 +55,8 @@
       transform: rotate(-135deg)
       transform-origin: center
       transition: all 0.3s ease
+      @include between(1280, 1439)
+        top: 20px
   &__input
     display: none
     &:checked + label
@@ -62,6 +64,10 @@
       max-height: unset
       opacity: 1
       position: relative
+      @include between(1280, 1439)
+        padding: 14px
+        font-size: 14px
+        line-height: 18px
       &:hover
         background-color: #F8F9FB
         color: $black

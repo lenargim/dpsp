@@ -27,21 +27,26 @@
     <div class="container">
       <div class="slider__wrap">
         <div class="swiper-wrapper" id="gallery">
-          <a href="images/dist/studios/studios1.jpg" class="slider__img img swiper-slide"><img
+          <a href="images/dist/studios/studios1.jpg" data-fancybox class="slider__img img swiper-slide"><img
                   src="images/dist/studios/studios1.jpg" alt="img1"></a>
-          <a href="images/dist/studios/studios2.jpg" class="slider__img img swiper-slide"><img
+          <a href="images/dist/studios/studios2.jpg" data-fancybox class="slider__img img swiper-slide"><img
                   src="images/dist/studios/studios2.jpg" alt="img2"></a>
-          <a href="images/dist/studios/studios3.jpg" class="slider__img img swiper-slide"><img
+          <a href="images/dist/studios/studios3.jpg" data-fancybox class="slider__img img swiper-slide"><img
                   src="images/dist/studios/studios3.jpg" alt="img3"></a>
-          <a href="images/dist/studios/studios4.jpg" class="slider__img img swiper-slide"><img
+          <a href="images/dist/studios/studios4.jpg" data-fancybox class="slider__img img swiper-slide"><img
                   src="images/dist/studios/studios4.jpg" alt="img4"></a>
-          <a href="images/dist/studios/studios5.jpg" class="slider__img img swiper-slide"><img
+          <a href="images/dist/studios/studios5.jpg" data-fancybox class="slider__img img swiper-slide"><img
                   src="images/dist/studios/studios5.jpg" alt="img5"></a>
         </div>
         <div class="slider__more" id="element-id">
           <!--#include virtual="/images/dist/svg/more.svg" -->
           <span>Все фото</span>
         </div>
+        <script>
+          document.getElementById('element-id').addEventListener('click', function () {
+            document.getElementById('gallery').getElementsByTagName('a')[0].click();
+          });
+        </script>
         <div class="swiper-pagination"></div>
       </div>
     </div>
@@ -177,10 +182,37 @@
   <section class="destination" id="destination">
     <div class="container">
       <div class="destination__wrap">
-        <a href="https://yandex.ru/maps/213/moscow/house/komsomolskiy_prospekt_13/Z04Ycw9pS0YOQFtvfXtycXxrYg==/?ll=37.593146%2C55.729730&z=15"
-           target="_blank" class="destination__map img">
-          <img src="images/dist/map.png" alt="map">
+        <a id="change-link" href="#" target="_blank" class="destination__map img">
+          <div id="map" class="destination__map"></div>
         </a>
+        <script src="https://api-maps.yandex.ru/2.1/?apikey=f23778e3-4bf9-42c8-b7fa-87e8712c323e&lang=ru_RU"
+                type="text/javascript">
+        </script>
+        <script>
+          let address = 'Казань, ул. Баумана 24';
+          ymaps.ready(init);
+          function init() {
+            var myMap = new ymaps.Map('map', {
+              center: [55.753994, 37.622093],
+              zoom: 10,
+              controls: []
+            });
+            ymaps.geocode(address, {
+              results: 1
+            }).then(function (res) {
+              var firstGeoObject = res.geoObjects.get(0),
+                bounds = firstGeoObject.properties.get('boundedBy');
+              firstGeoObject.options.set('preset', 'islands#darkBlueDotIconWithCaption');
+              // Получаем строку с адресом и выводим в иконке геообъекта.
+              firstGeoObject.properties.set('iconCaption', firstGeoObject.properties.get('name'));
+              myMap.geoObjects.add(firstGeoObject);
+              myMap.setBounds(bounds, {
+                checkZoomRange: true
+              });
+            });
+          }
+          document.getElementById('change-link').href = `https://yandex.ru/maps/?text={${address}`;
+        </script>
         <div class="destination__content">
           <div class="destination__title">Как добраться?</div>
           <div class="destination__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Condimentum diam orci

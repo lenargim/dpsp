@@ -7,7 +7,14 @@ $(document).ready(function () {
   $('.tel').mask('+7(Z00) 000-00-00', {translation: {'Z': {pattern: /[0-79]/}}});
 
 
-  Fancybox.bind("#gallery a", {
+  Fancybox.bind("[data-fancybox]", {
+    animated: false,
+    Image: {
+      zoom: false,
+    },
+    Toolbar: {
+      display: ["close"],
+    },
     groupAll : true, // Group all items
     Carousel: {
       Navigation: {
@@ -486,4 +493,20 @@ $(document).ready(function () {
   $('.about-contacts__city-title').on('click', function () {
     $(this).parent().toggleClass('open');
   });
+
+  $('#city-modal').focus(function () {
+    $(this).parents('.select_city').addClass('active')
+  });
+
+  $('#city-modal').blur(function () {
+    $(this).parents('.select_city').removeClass('active')
+  });
+
+  $('.modal__form').submit(function (e) {
+    e.preventDefault();
+    $('.overlay').removeClass('active');
+    $('.modal').removeClass('active');
+    $('.overlay-send').addClass('active');
+    $('.modal-send').addClass('active');
+  })
 });
