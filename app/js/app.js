@@ -432,8 +432,6 @@ $(document).ready(function () {
     $('.header').toggleClass('open');
   });
 
-
-
   $('.service__item-buttonbox button, .service-banner__button').on('click', function (e) {
     e.preventDefault();
     $("html, body").animate({scrollTop: 0}, 400);
@@ -509,4 +507,500 @@ $(document).ready(function () {
     $('.overlay-send').addClass('active');
     $('.modal-send').addClass('active');
   })
+
+
+  const csSelector = document.querySelector('#myCustomSelect'); // the input, svg and ul as a group
+  const csInput = csSelector.querySelector('input');
+  const csList = csSelector.querySelector('ul');
+  const csOptions = csList.querySelectorAll('li');
+  const aOptions = Array.from(csOptions);
+  let csState = "initial";
+  csSelector.setAttribute('role', 'combobox')
+  csSelector.setAttribute('aria-haspopup', 'listbox')
+  csSelector.setAttribute('aria-owns', 'custom-select-list') // container owns the list...
+  csInput.setAttribute('aria-autocomplete', 'both')
+  csInput.setAttribute('aria-controls', 'custom-select-list') // ...but the input controls it
+  csList.setAttribute('role', 'listbox')
+  csOptions.forEach(function(option) {
+    option.setAttribute('role', 'option')
+    option.setAttribute('tabindex', "-1")  // make li elements keyboard focusable by script only
+  });
+  const csSelector2 = document.querySelector('#city-modal'); // the input, svg and ul as a group
+  const csInput2 = csSelector2.querySelector('input');
+  const csList2 = csSelector2.querySelector('ul');
+  const csOptions2 = csList2.querySelectorAll('li');
+  const aOptions2 = Array.from(csOptions2);
+  csSelector2.setAttribute('role', 'combobox')
+  csSelector2.setAttribute('aria-haspopup', 'listbox')
+  csSelector2.setAttribute('aria-owns', 'custom-select-list') // container owns the list...
+  csInput2.setAttribute('aria-autocomplete', 'both')
+  csInput2.setAttribute('aria-controls', 'custom-select-list') // ...but the input controls it
+  csList2.setAttribute('role', 'listbox')
+  csOptions2.forEach(function(option) {
+    option.setAttribute('role', 'option')
+    option.setAttribute('tabindex', "-1")  // make li elements keyboard focusable by script only
+  });
+  // EVENTS
+  csSelector.addEventListener('click', function(e) {
+    const currentFocus = findFocus();
+    switch(csState) {
+      case 'initial' : // if state = initial, toggleOpen and set state to opened
+        toggleList('Open')
+        setState('opened')
+        break
+      case 'opened':
+        // if state = opened and focus on input, toggleShut and set state to initial
+        if (currentFocus === csInput) {
+          toggleList('Shut')
+          setState('initial')
+        } else if (currentFocus.tagName === 'LI') {
+          // if state = opened and focus on list, makeChoice, toggleShut and set state to closed
+          makeChoice(currentFocus)
+          toggleList('Shut')
+          setState('closed')
+        }
+        break
+      case 'filtered':
+        // if state = filtered and focus on list, makeChoice and set state to closed
+        if (currentFocus.tagName === 'LI') {
+          makeChoice(currentFocus)
+          toggleList('Shut')
+          setState('closed')
+        } // if state = filtered and focus on input, do nothing (wait for next user input)
+
+        break
+      case 'closed': // if state = closed, toggleOpen and set state to filtered? or opened?
+        toggleList('Open')
+        setState('filtered')
+        break
+    }
+  })
+  csSelector.addEventListener('keyup', function(e) {
+    doKeyAction(e.key)
+  });
+  csSelector2.addEventListener('click', function(e) {
+    const currentFocus = findFocus();
+    switch(csState) {
+      case 'initial' : // if state = initial, toggleOpen and set state to opened
+        toggleList2('Open')
+        setState('opened')
+        break
+      case 'opened':
+        // if state = opened and focus on input, toggleShut and set state to initial
+        if (currentFocus === csInput) {
+          toggleList2('Shut')
+          setState('initial')
+        } else if (currentFocus.tagName === 'LI') {
+          // if state = opened and focus on list, makeChoice, toggleShut and set state to closed
+          makeChoice2(currentFocus)
+          toggleList2('Shut')
+          setState('closed')
+        }
+        break
+      case 'filtered':
+        // if state = filtered and focus on list, makeChoice and set state to closed
+        if (currentFocus.tagName === 'LI') {
+          makeChoice2(currentFocus)
+          toggleList2('Shut')
+          setState('closed')
+        } // if state = filtered and focus on input, do nothing (wait for next user input)
+
+        break
+      case 'closed': // if state = closed, toggleOpen and set state to filtered? or opened?
+        toggleList2('Open')
+        setState('filtered')
+        break
+    }
+  })
+  csSelector2.addEventListener('keyup', function(e) {
+    doKeyAction2(e.key)
+  });
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.custom-select')) {
+      // click outside of the custom group
+      toggleList('Shut')
+      toggleList2('Shut')
+      setState('initial')
+    }
+  });
+
+  $('.select-css').on('input', function () {
+    if ( $(this).val() == '' ) {
+      $(this).parent().attr('aria-expanded', true);
+      $(this).siblings('.custom-select-options').removeClass('hidden-all')
+    }
+  });
+
+// FUNCTIONS
+// /////////////////////////////////
+
+  function toggleList(whichWay) {
+    if (whichWay === 'Open') {
+      csList.classList.remove('hidden-all')
+      csSelector.setAttribute('aria-expanded', 'true')
+    } else { // === 'Shut'
+      csList.classList.add('hidden-all')
+      csSelector.setAttribute('aria-expanded', 'false')
+    }
+  }
+
+  // function toggleList2(whichWay) {
+  //   if (whichWay === 'Open') {
+  //     csList2.classList.remove('hidden-all')
+  //     csSelector2.setAttribute('aria-expanded', 'true')
+  //   } else { // === 'Shut'
+  //     csList2.classList.add('hidden-all')
+  //     csSelector2.setAttribute('aria-expanded', 'false')
+  //   }
+  // }
+
+  function toggleList2(whichWay) {
+    if (whichWay === 'Open') {
+      $('#modal-select-list').removeClass('hidden-all').slideDown(200);
+      $('#city-modal').attr('aria-expanded', 'true')
+    } else {
+      $('#modal-select-list').addClass('hidden-all').slideUp(200);
+      $('#city-modal').attr('aria-expanded', 'false')
+    }
+  }
+
+  function findFocus() {
+    const focusPoint = document.activeElement
+    return focusPoint
+  }
+
+  function moveFocus(fromHere, toThere) {
+    // grab the currently showing options, which might have been filtered
+    const aCurrentOptions = aOptions.filter(function(option) {
+      if (option.style.display === '') {
+        return true
+      }
+    })
+    // don't move if all options have been filtered out
+    if (aCurrentOptions.length === 0) {
+      return
+    }
+    if (toThere === 'input') {
+      csInput.focus()
+    }
+    // possible start points
+    switch(fromHere) {
+      case csInput:
+        if (toThere === 'forward') {
+          aCurrentOptions[0].focus()
+        } else if (toThere === 'back') {
+          aCurrentOptions[aCurrentOptions.length - 1].focus()
+        }
+        break
+      case csOptions[0]:
+        if (toThere === 'forward') {
+          aCurrentOptions[1].focus()
+        } else if (toThere === 'back') {
+          csInput.focus()
+        }
+        break
+      case csOptions[csOptions.length - 1]:
+        if (toThere === 'forward') {
+          aCurrentOptions[0].focus()
+        } else if (toThere === 'back') {
+          aCurrentOptions[aCurrentOptions.length - 2].focus()
+        }
+        break
+      default: // middle list or filtered items
+        const currentItem = findFocus()
+        const whichOne = aCurrentOptions.indexOf(currentItem)
+        if (toThere === 'forward') {
+          const nextOne = aCurrentOptions[whichOne + 1]
+          nextOne.focus()
+        } else if (toThere === 'back' && whichOne > 0) {
+          const previousOne = aCurrentOptions[whichOne - 1]
+          previousOne.focus()
+        } else { // if whichOne = 0
+          csInput.focus()
+        }
+        break
+    }
+  }
+
+  function moveFocus2(fromHere, toThere) {
+    // grab the currently showing options, which might have been filtered
+    const aCurrentOptions2 = aOptions2.filter(function(option) {
+      if (option.style.display === '') {
+        return true
+      }
+    })
+    // don't move if all options have been filtered out
+    if (aCurrentOptions2.length === 0) {
+      return
+    }
+    if (toThere === 'input') {
+      csInput2.focus()
+    }
+    // possible start points
+    switch(fromHere) {
+      case csInput2:
+        if (toThere === 'forward') {
+          aCurrentOptions2[0].focus()
+        } else if (toThere === 'back') {
+          aCurrentOptions2[aCurrentOptions2.length - 1].focus()
+        }
+        break
+      case csOptions2[0]:
+        if (toThere === 'forward') {
+          aCurrentOptions2[1].focus()
+        } else if (toThere === 'back') {
+          csInput2.focus()
+        }
+        break
+      case csOptions2[csOptions.length - 1]:
+        if (toThere === 'forward') {
+          aCurrentOptions2[0].focus()
+        } else if (toThere === 'back') {
+          aCurrentOptions2[aCurrentOptions2.length - 2].focus()
+        }
+        break
+      default: // middle list or filtered items
+        const currentItem = findFocus()
+        const whichOne = aCurrentOptions2.indexOf(currentItem)
+        if (toThere === 'forward') {
+          const nextOne = aCurrentOptions2[whichOne + 1]
+          nextOne.focus()
+        } else if (toThere === 'back' && whichOne > 0) {
+          const previousOne = aCurrentOptions2[whichOne - 1]
+          previousOne.focus()
+        } else { // if whichOne = 0
+          csInput2.focus()
+        }
+        break
+    }
+  }
+
+  function doFilter() {
+    const terms = csInput.value
+    const aFilteredOptions = aOptions.filter(function(option) {
+      if (option.innerText.toUpperCase().startsWith(terms.toUpperCase())) {
+        return true
+      }
+    })
+    csOptions.forEach(option => option.style.display = "none")
+    aFilteredOptions.forEach(function(option) {
+      option.style.display = ""
+    })
+    setState('filtered')
+  }
+
+  function doFilter2() {
+    const terms = csInput2.value
+    const aFilteredOptions2 = aOptions2.filter(function(option) {
+      if (option.innerText.toUpperCase().startsWith(terms.toUpperCase())) {
+        return true
+      }
+    })
+    csOptions2.forEach(option => option.style.display = "none")
+    aFilteredOptions2.forEach(function(option) {
+      option.style.display = ""
+    })
+    setState('filtered')
+  }
+
+  function makeChoice(whichOption) {
+    const optionTitle = whichOption.querySelector('strong')
+    csInput.value = optionTitle.textContent
+    moveFocus(document.activeElement, 'input')
+  }
+  function makeChoice2(whichOption) {
+    const optionTitle = whichOption.querySelector('strong')
+    csInput2.value = optionTitle.textContent
+    moveFocus2(document.activeElement, 'input')
+  }
+
+  function setState(newState) {
+    switch (newState) {
+      case 'initial':
+        csState = 'initial'
+        break
+      case 'opened':
+        csState = 'opened'
+        break
+      case 'filtered':
+        csState = 'filtered'
+        break
+      case 'closed':
+        csState = 'closed'
+    }
+  }
+
+  function doKeyAction(whichKey) {
+    const currentFocus = findFocus()
+    switch(whichKey) {
+      case 'Enter':
+        if (csState === 'initial') {
+          // if state = initial, toggleOpen and set state to opened
+          toggleList('Open')
+          setState('opened')
+        } else if (csState === 'opened' && currentFocus.tagName === 'LI') {
+          // if state = opened and focus on list, makeChoice and set state to closed
+          makeChoice(currentFocus)
+          toggleList('Shut')
+          setState('closed')
+        } else if (csState === 'opened' && currentFocus === csInput) {
+          // if state = opened and focus on input, close it
+          toggleList('Shut')
+          setState('closed')
+        } else if (csState === 'filtered' && currentFocus.tagName === 'LI') {
+          // if state = filtered and focus on list, makeChoice and set state to closed
+          makeChoice(currentFocus)
+          toggleList('Shut')
+          setState('closed')
+        } else if (csState === 'filtered' && currentFocus === csInput) {
+          // if state = filtered and focus on input, set state to opened
+          toggleList('Open')
+          setState('opened')
+        } else { // i.e. csState is closed, or csState is opened/filtered but other focus point?
+          // if state = closed, set state to filtered? i.e. open but keep existing input?
+          toggleList('Open')
+          setState('filtered')
+        }
+        break
+
+      case 'Escape':
+        // if state = initial, do nothing
+        // if state = opened or filtered, set state to initial
+        // if state = closed, do nothing
+        if (csState === 'opened' || csState === 'filtered') {
+          toggleList('Shut')
+          setState('initial')
+        }
+        break
+
+      case 'ArrowDown':
+        if (csState === 'initial' || csState === 'closed') {
+          // if state = initial or closed, set state to opened and moveFocus to first
+          toggleList('Open')
+          moveFocus(csInput, 'forward')
+          setState('opened')
+        } else {
+          // if state = opened and focus on input, moveFocus to first
+          // if state = opened and focus on list, moveFocus to next/first
+          // if state = filtered and focus on input, moveFocus to first
+          // if state = filtered and focus on list, moveFocus to next/first
+          toggleList('Open')
+          moveFocus(currentFocus, 'forward')
+        }
+        break
+      case 'ArrowUp':
+        if (csState === 'initial' || csState === 'closed') {
+          // if state = initial, set state to opened and moveFocus to last
+          // if state = closed, set state to opened and moveFocus to last
+          toggleList('Open')
+          moveFocus(csInput, 'back')
+          setState('opened')
+        } else {
+          // if state = opened and focus on input, moveFocus to last
+          // if state = opened and focus on list, moveFocus to prev/last
+          // if state = filtered and focus on input, moveFocus to last
+          // if state = filtered and focus on list, moveFocus to prev/last
+          moveFocus(currentFocus, 'back')
+        }
+        break
+      default:
+        if (csState === 'initial') {
+          // if state = initial, toggle open, doFilter and set state to filtered
+          toggleList('Open')
+          doFilter()
+          setState('filtered')
+        } else if (csState === 'opened') {
+          // if state = opened, doFilter and set state to filtered
+          doFilter()
+          setState('filtered')
+        } else if (csState === 'closed') {
+          // if state = closed, doFilter and set state to filtered
+          doFilter()
+          setState('filtered')
+        } else { // already filtered
+          doFilter()
+        }
+        break
+    }
+  }
+
+  function doKeyAction2(whichKey) {
+    const currentFocus = findFocus()
+    switch(whichKey) {
+      case 'Enter':
+        if (csState === 'initial') {
+          // if state = initial, toggleOpen and set state to opened
+          toggleList2('Open')
+          setState('opened')
+        } else if (csState === 'opened' && currentFocus.tagName === 'LI') {
+          // if state = opened and focus on list, makeChoice and set state to closed
+          makeChoice2(currentFocus)
+          toggleList2('Shut')
+          setState('closed')
+        } else if (csState === 'opened' && currentFocus === csInput2) {
+          // if state = opened and focus on input, close it
+          toggleList2('Shut')
+          setState('closed')
+        } else if (csState === 'filtered' && currentFocus.tagName === 'LI') {
+          // if state = filtered and focus on list, makeChoice and set state to closed
+          makeChoice2(currentFocus)
+          toggleList2('Shut')
+          setState('closed')
+        } else if (csState === 'filtered' && currentFocus === csInput2) {
+          // if state = filtered and focus on input, set state to opened
+          toggleList2('Open')
+          setState('opened')
+        } else { // i.e. csState is closed, or csState is opened/filtered but other focus point?
+          // if state = closed, set state to filtered? i.e. open but keep existing input?
+          toggleList2('Open')
+          setState('filtered')
+        }
+        break
+
+      case 'Escape':
+        // if state = initial, do nothing
+        // if state = opened or filtered, set state to initial
+        // if state = closed, do nothing
+        if (csState === 'opened' || csState === 'filtered') {
+          toggleList('Shut')
+          setState('initial')
+        }
+        break
+
+      case 'ArrowDown':
+        if (csState === 'initial' || csState === 'closed') {
+          toggleList2('Open')
+          moveFocus2(csInput2, 'forward')
+          setState('opened')
+        } else {
+          toggleList2('Open')
+          moveFocus2(currentFocus, 'forward')
+        }
+        break
+      case 'ArrowUp':
+        if (csState === 'initial' || csState === 'closed') {
+          toggleList2('Open')
+          moveFocus2(csInput, 'back')
+          setState('opened')
+        } else {
+          moveFocus2(currentFocus, 'back')
+        }
+        break
+      default:
+        if (csState === 'initial') {
+          toggleList2('Open')
+          doFilter2()
+          setState('filtered')
+        } else if (csState === 'opened') {
+          doFilter2()
+          setState('filtered')
+        } else if (csState === 'closed') {
+          doFilter2()
+          setState('filtered')
+        } else {
+          doFilter2()
+        }
+        break
+    }
+  }
 });

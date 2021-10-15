@@ -25,6 +25,8 @@
 .select
   width: 100%
   height: 83px
+  &__title
+    display: block
   &__content
     position: absolute
     top: 28px
@@ -36,7 +38,9 @@
     z-index: 8
     background-color: #F8F9FB
     border-radius: 12px
-    overflow: hidden
+    overflow-x: hidden
+    overflow-y: auto
+    max-height: 200px
     font-weight: 500
     font-size: 15px
     line-height: 20px
@@ -55,7 +59,7 @@
       transform: rotate(-135deg)
       transform-origin: center
       transition: all 0.3s ease
-      @include between(1280, 1439)
+      @include max(1439)
         top: 20px
   &__input
     display: none
@@ -64,6 +68,7 @@
       max-height: unset
       opacity: 1
       position: relative
+      font-weight: 500
       @include between(1280, 1439)
         padding: 14px
         font-size: 14px
@@ -94,8 +99,121 @@
           transform: rotate(45deg)
       &__label:nth-child(n+2)
         max-height: 50px
+        min-height: 40px
         border-top-width: 1px
         padding: 16px
         opacity: 1
       &__input:checked + label
         background-color: $red
+
+#myCustomSelect
+  position: relative
+  &[aria-expanded="false"]
+    .select-css
+      border-radius: 30px
+      border: 1px solid $gray2
+  &[aria-expanded="true"]
+    .select-css
+      border-radius: 30px 30px 0 0
+      border-top: 2px solid $gray2
+      border-left: 2px solid $gray2
+      border-right: 2px solid $gray2
+      border-bottom: none
+  .custom-select-options
+    border: 1px solid $gray2
+    border-top: none
+    border-radius: 0 0 20px 20px
+    margin: 0
+    padding: 0
+    list-style-type: none
+    font-weight: normal
+    cursor: pointer
+    z-index: 2
+    position: absolute
+    width: 100%
+    background-color: #ffffff
+    overflow: hidden
+    &.hidden-all
+      display: none
+    li
+      padding: 1em 24px
+      &:hover
+        background: $gray2
+        color: #66afd9
+#custom-select-input
+  display: block
+  font-size: 16px
+  line-height: 23px
+  padding: 16.5px 24px
+  color: $gray1
+  width: 100%
+  max-width: 100%
+  box-sizing: border-box
+  margin: 0
+  appearance: none
+  background-color: #fff
+  position: relative
+  z-index: 2
+  border: 1px solid $gray2
+.select-css::-ms-expand
+  display: none
+.select-css:hover
+  border-color: #888
+.select-css:focus
+  color: $black
+  outline: none
+#city-modal
+  position: relative
+  .select-css
+    cursor: pointer
+  &:after
+    content: ''
+    width: 5px
+    height: 5px
+    border-left: 2px solid #000
+    border-top: 2px solid #000
+    position: absolute
+    right: 19px
+    top: 25px
+    transform: rotate(-135deg)
+    transform-origin: center
+    transition: all 0.3s ease
+    @include between(1280, 1439)
+      top: 20px
+  &[aria-expanded="true"]
+    &:after
+      transform: rotate(45deg)
+    .select-css
+      border-radius: 12px 12px 0 0
+  .custom-select-options
+    position: relative
+    transition: all 0.3s ease-out
+    z-index: 11
+    background-color: #F8F9FB
+    border-radius: 0 0 12px 12px
+    font-weight: 500
+    font-size: 15px
+    line-height: 20px
+    width: 100%
+    color: $black
+    border: none
+    max-height: 200px
+    overflow-y: auto
+    display: none
+    opacity: 1
+    &.hidden-all
+      opacity: 0
+    li
+      padding: 16px
+      transition: all 0.2s ease
+      cursor: pointer
+      @include between(1280, 1439)
+        padding: 14px
+      strong
+        font-size: 15px
+        font-weight: 400
+      &:hover
+        background: $red
+        color: $black
+      &:last-of-type
+        border-radius: 0 0 12px 12px

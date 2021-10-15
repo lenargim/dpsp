@@ -5,23 +5,25 @@
     <form class="modal__form">
       <div class="modal__row">
         <label class="label" for="modal-name">Имя</label>
-        <input type="text" id="modal-name" class="input">
+        <input type="text" id="modal-name" autocomplete="off" class="input">
       </div>
       <div class="modal__row">
         <label class="label" for="modal-phone">Контактный номер телефона</label>
-        <input type="tel" id="modal-phone" class="tel input">
+        <input type="tel" id="modal-phone" class="tel input" autocomplete="off">
       </div>
       <div class="modal__row">
         <div class="select select_city">
           <label for="city-modal" class="label select__title">Город</label>
-          <div class="select__content">
-            <input type="text" id="city-modal" list="cities-callback" class="input">
+          <div class="custom-select" id="city-modal">
+            <input type="text" id="modal-select-input" class="select-css input" aria-describedby="custom-select-info" autocomplete="off">
+            <ul class="custom-select-options hidden-all" id="modal-select-list">
+              <li><strong>Казань</strong></li>
+              <li><strong>Москва</strong></li>
+              <li><strong>Санкт-Петербург</strong></li>
+              <li><strong>Екатеринбург</strong></li>
+              <li><strong>Самара</strong></li>
+            </ul>
           </div>
-          <datalist id="cities-callback">
-            <option value="Казань">
-            <option value="Москва">
-            <option value="Санкт-Петербург">
-          </datalist>
         </div>
       </div>
       <div class="modal__row">
@@ -35,7 +37,6 @@
             <input value="пр Ямашева, 110" id="Address2" class="select__input" type="radio" name="Address" />
             <label for="Address2" class="select__label">пр Ямашева, 110</label>
             <input value="пр Ямашева, 111" id="Address3" class="select__input" type="radio" name="Address" />
-            <label for="Address3" class="select__label">пр Ямашева, 111</label>
           </div>
         </div>
       </div>
@@ -47,10 +48,19 @@
   <form class="modal modal-city">
     <div class="modal__close"></div>
     <div class="modal-city__row">
-      <input list="cities" name="cities" class="input modal-city__search" placeholder="Поиск города"/>
       <button type="submit" class="modal-city__submit">
         <!--#include virtual="/images/dist/svg/search.svg" -->
       </button>
+      <div class="custom-select" id="myCustomSelect">
+        <input type="text" id="custom-select-input" class="select-css" placeholder="Поиск города" aria-describedby="custom-select-info" autocomplete="off">
+        <ul class="custom-select-options hidden-all" id="custom-select-list">
+          <li><strong>Казань</strong></li>
+          <li><strong>Москва</strong></li>
+          <li><strong>Санкт-Петербург</strong></li>
+          <li><strong>Екатеринбург</strong></li>
+          <li><strong>Самара</strong></li>
+        </ul>
+      </div>
     </div>
     <datalist id="cities">
       <option value="Казань">
