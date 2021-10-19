@@ -1,0 +1,67 @@
+.footer
+  background: #0B0D17
+  padding: 53px 0 27px
+  @include max(767)
+    padding: 48px 0
+    .container
+      @include max(767)
+        padding: 0 43px
+  &__logo
+    margin: 0 auto 24px
+    width: fit-content
+    display: block
+    @include max(767)
+      margin-bottom: 48px
+    svg
+      width: 221px
+      height: 24px
+      fill: #fff
+  &__nav
+    margin: 0 auto 26px
+    display: flex
+    justify-content: center
+    align-items: center
+    gap: 24px
+    padding-bottom: 37px
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2)
+    @include max(767)
+      flex-direction: column
+      justify-content: flex-start
+      padding-bottom: 48px
+      margin-bottom: 48px
+  &__link
+    font-weight: 300
+    font-size: 16px
+    line-height: 23px
+    color: #fff
+  &__row
+    display: flex
+    align-items: center
+    justify-content: space-between
+    gap: 24px
+    font-size: 14px
+    line-height: 20px
+    color: #D9DBE1
+    @include max(767)
+      flex-direction: column
+      justify-content: flex-start
+      text-align: center
+  a
+    color: #D9DBE1
+  &__inst
+    display: flex
+    align-items: center
+    justify-content: flex-end
+    svg
+      width: 13px
+      height: 14px
+      fill: #fff
+    .svg-wrap
+      margin-right: 8px
+      display: flex
+      align-items: center
+      justify-content: center
+      border-radius: 50%
+      background-color: rgba(255, 255, 255, 0.1)
+      width: 24px
+      height: 24px
