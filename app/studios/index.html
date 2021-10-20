@@ -10,23 +10,19 @@
   <div class="container">
     <div class="title-wrap">
       <h1 class="title">Студии в Казани</h1>
-      <div class="studios-page__switcher">
-        <div class="active">Список</div>
-        <div id="map-init">Карта</div>
-      </div>
     </div>
-    <div class="studios-page__wrap open">
-      <form role="search" class="studios-page__search">
-        <input type="text" list="addresses" placeholder="Введите адрес">
-        <datalist id="addresses">
-          <option value="г. Казань, Комсомольский пр-т, д. 13">
-          <option value="г. Казань, ул. 50 лет ВЛКСМ, д. 2/1">
-          <option value="г. Казань, ул. Мира, д. 53">
-        </datalist>
-        <button type="submit">
-          <!--#include virtual="/images/dist/svg/search.svg" -->
-        </button>
-      </form>
+    <form role="search" class="studios-page__search">
+      <input type="text" list="addresses" placeholder="Введите адрес">
+      <datalist id="addresses">
+        <option value="г. Казань, Комсомольский пр-т, д. 13">
+        <option value="г. Казань, ул. 50 лет ВЛКСМ, д. 2/1">
+        <option value="г. Казань, ул. Мира, д. 53">
+      </datalist>
+      <button type="submit">
+        <!--#include virtual="/images/dist/svg/search.svg" -->
+      </button>
+    </form>
+    <div class="studios-page__wrap">
       <div class="studios__item">
         <a href="studios/studios-detailed.html" class="studios__item-detailed">
           <div class="studios__item-title">Комсомольский проспект</div>
@@ -83,83 +79,45 @@
            target="_blank" class="studios__item-link button">На карте</a>
       </div>
     </div>
-    <div class="studios-page__wrap studios-page__wrap_map">
-      <div class="studios-page__aside">
-        <div class="studios__item">
-          <a href="studios/studios-detailed.html" class="studios__item-detailed">
-            <div class="studios__item-title">Комсомольский проспект</div>
-            <div class="studios__item-exp">г. Казань, Комсомольский пр-т, д. 13</div>
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=f23778e3-4bf9-42c8-b7fa-87e8712c323e&lang=ru_RU"
+            type="text/javascript">
+    </script>
+    <script>
+      let city = 'Казань';
+      let adresses = ['Дубровка 40', 'Спартаковская 15', 'Петербургская 1'];
+      ymaps.ready(init);
+      let cityMap;
 
-            <span class="studios__item-time">с 07:30 до 19:00</span>
-          </a>
-          <a href="+79999999999" class="studios__item-phone">+7 999 999-99-99</a>
-          <a href="https://yandex.ru/maps/?text={Москва Комсомольский пр-т, д. 13}"
-             target="_blank" class="studios__item-link button">На карте</a>
-        </div>
-        <div class="studios__item">
-          <a href="studios/studios-detailed.html" class="studios__item-detailed">
-            <div class="studios__item-title">Комсомольский проспект</div>
-            <div class="studios__item-exp">г. Казань, Комсомольский пр-т, д. 13</div>
-
-            <span class="studios__item-time">с 07:30 до 19:00</span>
-          </a>
-          <a href="+79999999999" class="studios__item-phone">+7 999 999-99-99</a>
-          <a href="https://yandex.ru/maps/?text={Москва Комсомольский пр-т, д. 13}"
-             target="_blank" class="studios__item-link button">На карте</a>
-        </div>
-        <div class="studios__item">
-          <a href="studios/studios-detailed.html" class="studios__item-detailed">
-            <div class="studios__item-title">Комсомольский проспект</div>
-            <div class="studios__item-exp">г. Казань, Комсомольский пр-т, д. 13</div>
-
-            <span class="studios__item-time">с 07:30 до 19:00</span>
-          </a>
-          <a href="+79999999999" class="studios__item-phone">+7 999 999-99-99</a>
-          <a href="https://yandex.ru/maps/?text={Москва Комсомольский пр-т, д. 13}"
-             target="_blank" class="studios__item-link button">На карте</a>
-        </div>
-      </div>
-      <script src="https://api-maps.yandex.ru/2.1/?apikey=f23778e3-4bf9-42c8-b7fa-87e8712c323e&lang=ru_RU"
-              type="text/javascript">
-      </script>
-      <script>
-        let city = 'Казань';
-        let adresses = ['Дубровка 40', 'Спартаковская 15','Петербургская 1'];
-        ymaps.ready(init);
-        let cityMap;
-        function init() {
-          document.getElementById('map-init').addEventListener('click', event => {
-            if (!cityMap) {
-              cityMap = new ymaps.Map('map', {
-                center: [55.753994, 37.622093],
-                zoom: 10,
-                controls: []
-              });
-              ymaps.geocode(city, {
-                results: 1
-              }).then(function (res) {
-                var firstGeoObject = res.geoObjects.get(0),
-                  bounds = firstGeoObject.properties.get('boundedBy');
-                cityMap.setBounds(bounds, {
-                  checkZoomRange: true
-                });
-              });
-              for (var i = 0, l = adresses.length; i < l; i++) {
-                ymaps.geocode(`${city} ${adresses[i]}`, {
-                  results: 1
-                }).then(function (res) {
-                  var firstGeoObject = res.geoObjects.get(0);
-                  firstGeoObject.options.set('preset', 'islands#darkBlueDotIconWithCaption');
-                  firstGeoObject.properties.set('iconCaption', firstGeoObject.properties.get('name'));
-                  cityMap.geoObjects.add(firstGeoObject);
-                });
-              }
-            }
+      function init() {
+        if (!cityMap) {
+          cityMap = new ymaps.Map('map', {
+            center: [55.753994, 37.622093],
+            zoom: 10,
+            controls: []
           });
+          ymaps.geocode(city, {
+            results: 1
+          }).then(function (res) {
+            var firstGeoObject = res.geoObjects.get(0),
+              bounds = firstGeoObject.properties.get('boundedBy');
+            cityMap.setBounds(bounds, {
+              checkZoomRange: true
+            });
+          });
+          for (var i = 0, l = adresses.length; i < l; i++) {
+            ymaps.geocode(`${city} ${adresses[i]}`, {
+              results: 1
+            }).then(function (res) {
+              var firstGeoObject = res.geoObjects.get(0);
+              firstGeoObject.options.set('preset', 'islands#darkBlueDotIconWithCaption');
+              firstGeoObject.properties.set('iconCaption', firstGeoObject.properties.get('name'));
+              cityMap.geoObjects.add(firstGeoObject);
+            });
+          }
         }
-      </script>
-      <div class="studios-page__map" id="map">
-      </div>
+      }
+    </script>
+    <div class="studios-page__map" id="map">
     </div>
   </div>
 </main>

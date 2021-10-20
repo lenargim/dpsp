@@ -284,6 +284,7 @@ $(document).ready(function () {
     $('main').toggleClass('blur');
     $('header').toggleClass('blur');
     $('.register').toggleClass('active');
+    $("html, body").animate({scrollTop: 0}, 400);
   });
 
   $('.register-next').submit(function (e) {
@@ -432,13 +433,13 @@ $(document).ready(function () {
     $('.header').toggleClass('open');
   });
 
-  $('.service__item-buttonbox button, .service-banner__button').on('click', function (e) {
-    e.preventDefault();
-    $("html, body").animate({scrollTop: 0}, 400);
-    $('main').toggleClass('blur');
-    $('header').toggleClass('blur');
-    $('.register').toggleClass('active');
-  });
+  // $('.service__item-buttonbox button, .service-banner__button').on('click', function (e) {
+  //   e.preventDefault();
+  //   $("html, body").animate({scrollTop: 0}, 400);
+  //   $('main').toggleClass('blur');
+  //   $('header').toggleClass('blur');
+  //   $('.register').toggleClass('active');
+  // });
 
   $('.studios-detailed__diarections').on('click', function(e) {
     e.preventDefault();
@@ -476,16 +477,6 @@ $(document).ready(function () {
     $(this).parents('.modal-city').submit();
     $('.overlay').removeClass('active');
     $('.modal').removeClass('active')
-  });
-
-  $('.studios-page__switcher div').on('click', function () {
-    if ( !$(this).hasClass('active') ) {
-      $(this).siblings().removeClass('active');
-      $(this).addClass('active');
-      let index = $(this).index();
-      $('.studios-page__wrap').removeClass('open');
-      $('.studios-page__wrap').eq(index).addClass('open');
-    }
   });
 
   $('.about-contacts__city-title').on('click', function () {
