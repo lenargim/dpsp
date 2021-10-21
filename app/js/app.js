@@ -1,7 +1,7 @@
 import 'jquery';
 import 'jquery-mask-plugin'
 import datepicker from 'js-datepicker'
-import { Fancybox } from "@fancyapps/ui";
+import {Fancybox} from "@fancyapps/ui";
 
 $(document).ready(function () {
   $('.tel').mask('+7(Z00) 000-00-00', {translation: {'Z': {pattern: /[0-79]/}}});
@@ -15,7 +15,7 @@ $(document).ready(function () {
     Toolbar: {
       display: ["close"],
     },
-    groupAll : true, // Group all items
+    groupAll: true, // Group all items
     Carousel: {
       Navigation: {
         prevTpl:
@@ -43,12 +43,12 @@ $(document).ready(function () {
     customDays: ['ПН', 'ВТ', 'СР', 'ЧТ', 'ПТ', 'СБ', 'ВС'],
     customMonths: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
     formatter: (input, date, instance) => {
-      const options = { month: 'long', day: 'numeric'};
+      const options = {month: 'long', day: 'numeric'};
       const value = date.toLocaleDateString('ru-RU', options);
       input.value = value
     },
     onSelect: (instance, date) => {
-      const options1 = { month: 'long', day: 'numeric'};
+      const options1 = {month: 'long', day: 'numeric'};
       const options2 = {weekday: 'long'};
       let value1 = date.toLocaleDateString('ru-RU', options1);
       let dayOfWeek = new Intl.DateTimeFormat('ru-RU', options2).format(date);
@@ -190,12 +190,14 @@ $(document).ready(function () {
       },
     });
   }
+
   let myGallery = undefined;
+
   //if (window.innerWidth < 767) galleryInit();
 
   function initGallery() {
     var screenWidth = $(window).width();
-    if(screenWidth < 768 && myGallery == undefined) {
+    if (screenWidth < 768 && myGallery == undefined) {
       myGallery = new Swiper('.slider__wrap', {
         speed: 400,
         loop: true,
@@ -218,9 +220,10 @@ $(document).ready(function () {
   }
 
   let myServices = undefined;
+
   function initServices() {
     var screenWidth = $(window).width();
-    if(screenWidth < 768 && myServices == undefined) {
+    if (screenWidth < 768 && myServices == undefined) {
       myServices = new Swiper('.service__slider', {
         speed: 400,
         loop: true,
@@ -242,7 +245,7 @@ $(document).ready(function () {
     }
   }
 
-  $(window).on('resize', function(){
+  $(window).on('resize', function () {
     initGallery();
     initServices();
   });
@@ -300,8 +303,8 @@ $(document).ready(function () {
           let mainInput = $('.register__mainform').find(`input[name=${name}]`);
           mainInput.val(val);
         }
-      } else if(type == 'checkbox'  ) {
-        if ( $(this).prop('checked') ) {
+      } else if (type == 'checkbox') {
+        if ($(this).prop('checked')) {
           let mainInput = $('.register__mainform').find(`input[name=${name}]`);
           mainInput.val() == '' ? mainInput.val(val) : mainInput.val(mainInput.val() + `, ${val}`)
         }
@@ -321,7 +324,7 @@ $(document).ready(function () {
     $('.register__detail').hide();
     let date = form.find('#datepicker').val();
     let time = form.find('.register__detail-time-input').val();
-    $('#mainform-time').val(date+' в '+time);
+    $('#mainform-time').val(date + ' в ' + time);
     form.find('active').removeClass('active');
     form.find('qs-active').removeClass('qs-active');
     $('.register__mainform-field.active').removeClass('active');
@@ -332,8 +335,8 @@ $(document).ready(function () {
     $('.blur').removeClass('blur');
     $('header').removeClass('blur');
     $('.register').removeClass('active');
-    let array = $( this ).serializeArray();
-    let name = array[0].value.substring(0,array[0].value.indexOf(","));
+    let array = $(this).serializeArray();
+    let name = array[0].value.substring(0, array[0].value.indexOf(","));
     let address = array[1].value;
     let service = array[2].value;
     let worker = array[3].value;
@@ -366,7 +369,7 @@ $(document).ready(function () {
   });
 
   $('.register__mainform-field').on('click', function () {
-    if ( !$(this).hasClass('active') ) {
+    if (!$(this).hasClass('active')) {
       $('.register__mainform-field').removeClass('active');
       $(this).addClass('active');
       let index = $(this).index();
@@ -375,15 +378,15 @@ $(document).ready(function () {
     }
   });
 
-  if ( $('main').attr('class').includes('news') ) {
+  if ($('main').attr('class').includes('news')) {
     $('.header__menu-news').addClass('open')
-  } else if ( $('main').attr('class').includes('studios') ) {
+  } else if ($('main').attr('class').includes('studios')) {
     $('.header__menu-studios').addClass('open')
-  } else if ( $('main').attr('class').includes('service') ) {
+  } else if ($('main').attr('class').includes('service')) {
     $('.header__menu-services').addClass('open')
-  } else if ( $('main').attr('class').includes('actions') ) {
+  } else if ($('main').attr('class').includes('actions')) {
     $('.header__menu-actions').addClass('open')
-  } else if ( $('main').attr('class').includes('about') ) {
+  } else if ($('main').attr('class').includes('about')) {
     $('.header__menu-about').addClass('open')
   }
 
@@ -418,7 +421,7 @@ $(document).ready(function () {
     $('.overlay-vakansy').addClass('active');
     $('.modal-vakansy').addClass('active');
     let position = $('#vakansy-position');
-    if ( !$(this).hasClass('open-vakansy_another') ) {
+    if (!$(this).hasClass('open-vakansy_another')) {
       $('.modal-vakansy-head').addClass('active');
       position.val($('h1').text());
     } else {
@@ -433,19 +436,12 @@ $(document).ready(function () {
     $('.header').toggleClass('open');
   });
 
-  // $('.service__item-buttonbox button, .service-banner__button').on('click', function (e) {
-  //   e.preventDefault();
-  //   $("html, body").animate({scrollTop: 0}, 400);
-  //   $('main').toggleClass('blur');
-  //   $('header').toggleClass('blur');
-  //   $('.register').toggleClass('active');
-  // });
 
-  $('.studios-detailed__diarections').on('click', function(e) {
+  $('.studios-detailed__diarections').on('click', function (e) {
     e.preventDefault();
     let anchor = $(this).attr('href');
     $('html, body').animate({
-      scrollTop:  $(anchor).offset().top - 30
+      scrollTop: $(anchor).offset().top - 30
     }, 600);
   });
 
@@ -463,7 +459,7 @@ $(document).ready(function () {
   });
 
   $('.modal-city__letter').on('click', function () {
-    if ( !$(this).hasClass('active') ) {
+    if (!$(this).hasClass('active')) {
       $(this).siblings().removeClass('active');
       $(this).addClass('active');
       let index = $(this).index();
@@ -497,501 +493,117 @@ $(document).ready(function () {
     $('.modal').removeClass('active');
     $('.overlay-send').addClass('active');
     $('.modal-send').addClass('active');
-  })
+  });
 
 
-  const csSelector = document.querySelector('#myCustomSelect'); // the input, svg and ul as a group
-  const csInput = csSelector.querySelector('input');
-  const csList = csSelector.querySelector('ul');
-  const csOptions = csList.querySelectorAll('li');
-  const aOptions = Array.from(csOptions);
-  let csState = "initial";
-  csSelector.setAttribute('role', 'combobox')
-  csSelector.setAttribute('aria-haspopup', 'listbox')
-  csSelector.setAttribute('aria-owns', 'custom-select-list') // container owns the list...
-  csInput.setAttribute('aria-autocomplete', 'both')
-  csInput.setAttribute('aria-controls', 'custom-select-list') // ...but the input controls it
-  csList.setAttribute('role', 'listbox')
-  csOptions.forEach(function(option) {
-    option.setAttribute('role', 'option')
-    option.setAttribute('tabindex', "-1")  // make li elements keyboard focusable by script only
-  });
-  const csSelector2 = document.querySelector('#city-modal'); // the input, svg and ul as a group
-  const csInput2 = csSelector2.querySelector('input');
-  const csList2 = csSelector2.querySelector('ul');
-  const csOptions2 = csList2.querySelectorAll('li');
-  const aOptions2 = Array.from(csOptions2);
-  csSelector2.setAttribute('role', 'combobox')
-  csSelector2.setAttribute('aria-haspopup', 'listbox')
-  csSelector2.setAttribute('aria-owns', 'custom-select-list') // container owns the list...
-  csInput2.setAttribute('aria-autocomplete', 'both')
-  csInput2.setAttribute('aria-controls', 'custom-select-list') // ...but the input controls it
-  csList2.setAttribute('role', 'listbox')
-  csOptions2.forEach(function(option) {
-    option.setAttribute('role', 'option')
-    option.setAttribute('tabindex', "-1")  // make li elements keyboard focusable by script only
-  });
+  let datalist = $('.datalist');
+  let datalistInput = datalist.find('.datalist__input');
+  let datalistUi = datalist.find('.datalist__ul');
+  let datalistLi = datalist.find('.datalist__li');
+
   // EVENTS
-  csSelector.addEventListener('click', function(e) {
-    const currentFocus = findFocus();
-    switch(csState) {
-      case 'initial' : // if state = initial, toggleOpen and set state to opened
-        toggleList('Open')
-        setState('opened')
-        break
-      case 'opened':
-        // if state = opened and focus on input, toggleShut and set state to initial
-        if (currentFocus === csInput) {
-          toggleList('Shut')
-          setState('initial')
-        } else if (currentFocus.tagName === 'LI') {
-          // if state = opened and focus on list, makeChoice, toggleShut and set state to closed
-          makeChoice(currentFocus)
-          toggleList('Shut')
-          setState('closed')
-        }
-        break
-      case 'filtered':
-        // if state = filtered and focus on list, makeChoice and set state to closed
-        if (currentFocus.tagName === 'LI') {
-          makeChoice(currentFocus)
-          toggleList('Shut')
-          setState('closed')
-        } // if state = filtered and focus on input, do nothing (wait for next user input)
-
-        break
-      case 'closed': // if state = closed, toggleOpen and set state to filtered? or opened?
-        toggleList('Open')
-        setState('filtered')
-        break
-    }
-  })
-  csSelector.addEventListener('keyup', function(e) {
-    doKeyAction(e.key)
-  });
-  csSelector2.addEventListener('click', function(e) {
-    const currentFocus = findFocus();
-    switch(csState) {
-      case 'initial' : // if state = initial, toggleOpen and set state to opened
-        toggleList2('Open')
-        setState('opened')
-        break
-      case 'opened':
-        // if state = opened and focus on input, toggleShut and set state to initial
-        if (currentFocus === csInput) {
-          toggleList2('Shut')
-          setState('initial')
-        } else if (currentFocus.tagName === 'LI') {
-          // if state = opened and focus on list, makeChoice, toggleShut and set state to closed
-          makeChoice2(currentFocus)
-          toggleList2('Shut')
-          setState('closed')
-        }
-        break
-      case 'filtered':
-        // if state = filtered and focus on list, makeChoice and set state to closed
-        if (currentFocus.tagName === 'LI') {
-          makeChoice2(currentFocus)
-          toggleList2('Shut')
-          setState('closed')
-        } // if state = filtered and focus on input, do nothing (wait for next user input)
-
-        break
-      case 'closed': // if state = closed, toggleOpen and set state to filtered? or opened?
-        toggleList2('Open')
-        setState('filtered')
-        break
-    }
-  })
-  csSelector2.addEventListener('keyup', function(e) {
-    doKeyAction2(e.key)
-  });
-  document.addEventListener('click', function(e) {
-    if (!e.target.closest('.custom-select')) {
-      // click outside of the custom group
-      toggleList('Shut')
-      toggleList2('Shut')
-      setState('initial')
-    }
-  });
-
-  $('.select-css').on('input', function () {
-    if ( $(this).val() == '' ) {
-      $(this).parent().attr('aria-expanded', true);
-      $(this).siblings('.custom-select-options').removeClass('hidden-all')
-    }
-  });
-
-// FUNCTIONS
-// /////////////////////////////////
-
-  function toggleList(whichWay) {
-    if (whichWay === 'Open') {
-      csList.classList.remove('hidden-all')
-      csSelector.setAttribute('aria-expanded', 'true')
-    } else { // === 'Shut'
-      csList.classList.add('hidden-all')
-      csSelector.setAttribute('aria-expanded', 'false')
-    }
-  }
-
-  // function toggleList2(whichWay) {
-  //   if (whichWay === 'Open') {
-  //     csList2.classList.remove('hidden-all')
-  //     csSelector2.setAttribute('aria-expanded', 'true')
-  //   } else { // === 'Shut'
-  //     csList2.classList.add('hidden-all')
-  //     csSelector2.setAttribute('aria-expanded', 'false')
-  //   }
-  // }
-
-  function toggleList2(whichWay) {
-    if (whichWay === 'Open') {
-      $('#modal-select-list').removeClass('hidden-all').slideDown(200);
-      $('#city-modal').attr('aria-expanded', 'true')
-    } else {
-      $('#modal-select-list').addClass('hidden-all').slideUp(200);
-      $('#city-modal').attr('aria-expanded', 'false')
-    }
-  }
-
-  function findFocus() {
-    const focusPoint = document.activeElement
-    return focusPoint
-  }
-
-  function moveFocus(fromHere, toThere) {
-    // grab the currently showing options, which might have been filtered
-    const aCurrentOptions = aOptions.filter(function(option) {
-      if (option.style.display === '') {
-        return true
-      }
-    })
-    // don't move if all options have been filtered out
-    if (aCurrentOptions.length === 0) {
-      return
-    }
-    if (toThere === 'input') {
-      csInput.focus()
-    }
-    // possible start points
-    switch(fromHere) {
-      case csInput:
-        if (toThere === 'forward') {
-          aCurrentOptions[0].focus()
-        } else if (toThere === 'back') {
-          aCurrentOptions[aCurrentOptions.length - 1].focus()
-        }
-        break
-      case csOptions[0]:
-        if (toThere === 'forward') {
-          aCurrentOptions[1].focus()
-        } else if (toThere === 'back') {
-          csInput.focus()
-        }
-        break
-      case csOptions[csOptions.length - 1]:
-        if (toThere === 'forward') {
-          aCurrentOptions[0].focus()
-        } else if (toThere === 'back') {
-          aCurrentOptions[aCurrentOptions.length - 2].focus()
-        }
-        break
-      default: // middle list or filtered items
-        const currentItem = findFocus()
-        const whichOne = aCurrentOptions.indexOf(currentItem)
-        if (toThere === 'forward') {
-          const nextOne = aCurrentOptions[whichOne + 1]
-          nextOne.focus()
-        } else if (toThere === 'back' && whichOne > 0) {
-          const previousOne = aCurrentOptions[whichOne - 1]
-          previousOne.focus()
-        } else { // if whichOne = 0
-          csInput.focus()
-        }
-        break
-    }
-  }
-
-  function moveFocus2(fromHere, toThere) {
-    // grab the currently showing options, which might have been filtered
-    const aCurrentOptions2 = aOptions2.filter(function(option) {
-      if (option.style.display === '') {
-        return true
-      }
-    })
-    // don't move if all options have been filtered out
-    if (aCurrentOptions2.length === 0) {
-      return
-    }
-    if (toThere === 'input') {
-      csInput2.focus()
-    }
-    // possible start points
-    switch(fromHere) {
-      case csInput2:
-        if (toThere === 'forward') {
-          aCurrentOptions2[0].focus()
-        } else if (toThere === 'back') {
-          aCurrentOptions2[aCurrentOptions2.length - 1].focus()
-        }
-        break
-      case csOptions2[0]:
-        if (toThere === 'forward') {
-          aCurrentOptions2[1].focus()
-        } else if (toThere === 'back') {
-          csInput2.focus()
-        }
-        break
-      case csOptions2[csOptions.length - 1]:
-        if (toThere === 'forward') {
-          aCurrentOptions2[0].focus()
-        } else if (toThere === 'back') {
-          aCurrentOptions2[aCurrentOptions2.length - 2].focus()
-        }
-        break
-      default: // middle list or filtered items
-        const currentItem = findFocus()
-        const whichOne = aCurrentOptions2.indexOf(currentItem)
-        if (toThere === 'forward') {
-          const nextOne = aCurrentOptions2[whichOne + 1]
-          nextOne.focus()
-        } else if (toThere === 'back' && whichOne > 0) {
-          const previousOne = aCurrentOptions2[whichOne - 1]
-          previousOne.focus()
-        } else { // if whichOne = 0
-          csInput2.focus()
-        }
-        break
-    }
-  }
-
-  function doFilter() {
-    const terms = csInput.value
-    const aFilteredOptions = aOptions.filter(function(option) {
-      if (option.innerText.toUpperCase().startsWith(terms.toUpperCase())) {
-        return true
-      }
-    })
-    csOptions.forEach(option => option.style.display = "none")
-    aFilteredOptions.forEach(function(option) {
-      option.style.display = ""
-    })
-    setState('filtered')
-  }
-
-  function doFilter2() {
-    const terms = csInput2.value
-    const aFilteredOptions2 = aOptions2.filter(function(option) {
-      if (option.innerText.toUpperCase().startsWith(terms.toUpperCase())) {
-        return true
-      }
-    })
-    csOptions2.forEach(option => option.style.display = "none")
-    aFilteredOptions2.forEach(function(option) {
-      option.style.display = ""
-    })
-    setState('filtered')
-  }
-
-  function makeChoice(whichOption) {
-    const optionTitle = whichOption.querySelector('strong')
-    csInput.value = optionTitle.textContent
-    moveFocus(document.activeElement, 'input')
-  }
-  function makeChoice2(whichOption) {
-    const optionTitle = whichOption.querySelector('strong')
-    csInput2.value = optionTitle.textContent
-    moveFocus2(document.activeElement, 'input')
-  }
-
-  function setState(newState) {
-    switch (newState) {
+  datalist.click(function () {
+    let $this = $(this);
+    let focus = $(':focus');
+    let state = $(this).attr('data-state');
+    switch (state) {
       case 'initial':
-        csState = 'initial'
-        break
+        toggleDatalist($this, 'opened');
+        break;
       case 'opened':
-        csState = 'opened'
-        break
-      case 'filtered':
-        csState = 'filtered'
-        break
-      case 'closed':
-        csState = 'closed'
+        if (focus.hasClass('datalist__input')) {
+          toggleDatalist($this, 'initial')
+        }
+        break;
+    }
+  });
+
+  datalist.on('keyup', function (e) {
+    let $this = $(this);
+    doDatalistAction($this, e.key)
+  });
+
+  datalistLi.on('click', function () {
+    let parent = $(this).parents('.datalist');
+    toggleDatalist(parent, 'initial');
+    parent.find(datalistInput).val($(this).text());
+    return false;
+  });
+
+  function toggleDatalist($this, status) {
+    $this.attr('data-state', status);
+    if (status == 'opened') {
+      $this.find(datalistUi).slideDown(300)
+    } else if (status == 'initial') {
+      $this.find(datalistUi).slideUp(300)
     }
   }
 
-  function doKeyAction(whichKey) {
-    const currentFocus = findFocus()
-    switch(whichKey) {
-      case 'Enter':
-        if (csState === 'initial') {
-          // if state = initial, toggleOpen and set state to opened
-          toggleList('Open')
-          setState('opened')
-        } else if (csState === 'opened' && currentFocus.tagName === 'LI') {
-          // if state = opened and focus on list, makeChoice and set state to closed
-          makeChoice(currentFocus)
-          toggleList('Shut')
-          setState('closed')
-        } else if (csState === 'opened' && currentFocus === csInput) {
-          // if state = opened and focus on input, close it
-          toggleList('Shut')
-          setState('closed')
-        } else if (csState === 'filtered' && currentFocus.tagName === 'LI') {
-          // if state = filtered and focus on list, makeChoice and set state to closed
-          makeChoice(currentFocus)
-          toggleList('Shut')
-          setState('closed')
-        } else if (csState === 'filtered' && currentFocus === csInput) {
-          // if state = filtered and focus on input, set state to opened
-          toggleList('Open')
-          setState('opened')
-        } else { // i.e. csState is closed, or csState is opened/filtered but other focus point?
-          // if state = closed, set state to filtered? i.e. open but keep existing input?
-          toggleList('Open')
-          setState('filtered')
-        }
-        break
-
+  function doDatalistAction($this, key) {
+    let state = $this.attr('data-state');
+    switch (key) {
       case 'Escape':
-        // if state = initial, do nothing
-        // if state = opened or filtered, set state to initial
-        // if state = closed, do nothing
-        if (csState === 'opened' || csState === 'filtered') {
-          toggleList('Shut')
-          setState('initial')
+        if (state = 'opened') {
+          toggleDatalist($this, 'initial')
         }
-        break
-
+        break;
       case 'ArrowDown':
-        if (csState === 'initial' || csState === 'closed') {
-          // if state = initial or closed, set state to opened and moveFocus to first
-          toggleList('Open')
-          moveFocus(csInput, 'forward')
-          setState('opened')
-        } else {
-          // if state = opened and focus on input, moveFocus to first
-          // if state = opened and focus on list, moveFocus to next/first
-          // if state = filtered and focus on input, moveFocus to first
-          // if state = filtered and focus on list, moveFocus to next/first
-          toggleList('Open')
-          moveFocus(currentFocus, 'forward')
+        if (state = 'opened') {
+          if ($(':focus').hasClass('datalist__li')) {
+            if ($(':focus').is(':last-child')) {
+              $(':focus').blur();
+              $this.find(datalistLi).first().focus()
+            } else {
+              $(':focus').blur().next().focus();
+            }
+          } else {
+            $(':focus').blur();
+            $this.find(datalistLi).first().focus()
+          }
         }
-        break
+        break;
       case 'ArrowUp':
-        if (csState === 'initial' || csState === 'closed') {
-          // if state = initial, set state to opened and moveFocus to last
-          // if state = closed, set state to opened and moveFocus to last
-          toggleList('Open')
-          moveFocus(csInput, 'back')
-          setState('opened')
-        } else {
-          // if state = opened and focus on input, moveFocus to last
-          // if state = opened and focus on list, moveFocus to prev/last
-          // if state = filtered and focus on input, moveFocus to last
-          // if state = filtered and focus on list, moveFocus to prev/last
-          moveFocus(currentFocus, 'back')
+        if (state = 'opened') {
+          if ($(':focus').hasClass('datalist__li')) {
+            if ($(':focus').is(':first-child')) {
+              $(':focus').blur();
+              $this.find(datalistLi).last().focus()
+            } else {
+              $(':focus').blur().prev().focus();
+            }
+          } else {
+            $(':focus').blur();
+            $this.find(datalistLi).last().focus()
+          }
         }
-        break
-      default:
-        if (csState === 'initial') {
-          // if state = initial, toggle open, doFilter and set state to filtered
-          toggleList('Open')
-          doFilter()
-          setState('filtered')
-        } else if (csState === 'opened') {
-          // if state = opened, doFilter and set state to filtered
-          doFilter()
-          setState('filtered')
-        } else if (csState === 'closed') {
-          // if state = closed, doFilter and set state to filtered
-          doFilter()
-          setState('filtered')
-        } else { // already filtered
-          doFilter()
-        }
-        break
-    }
-  }
-
-  function doKeyAction2(whichKey) {
-    const currentFocus = findFocus()
-    switch(whichKey) {
+        break;
       case 'Enter':
-        if (csState === 'initial') {
-          // if state = initial, toggleOpen and set state to opened
-          toggleList2('Open')
-          setState('opened')
-        } else if (csState === 'opened' && currentFocus.tagName === 'LI') {
-          // if state = opened and focus on list, makeChoice and set state to closed
-          makeChoice2(currentFocus)
-          toggleList2('Shut')
-          setState('closed')
-        } else if (csState === 'opened' && currentFocus === csInput2) {
-          // if state = opened and focus on input, close it
-          toggleList2('Shut')
-          setState('closed')
-        } else if (csState === 'filtered' && currentFocus.tagName === 'LI') {
-          // if state = filtered and focus on list, makeChoice and set state to closed
-          makeChoice2(currentFocus)
-          toggleList2('Shut')
-          setState('closed')
-        } else if (csState === 'filtered' && currentFocus === csInput2) {
-          // if state = filtered and focus on input, set state to opened
-          toggleList2('Open')
-          setState('opened')
-        } else { // i.e. csState is closed, or csState is opened/filtered but other focus point?
-          // if state = closed, set state to filtered? i.e. open but keep existing input?
-          toggleList2('Open')
-          setState('filtered')
+        if (state = 'opened' && $(':focus').hasClass('datalist__li')) {
+          toggleDatalist($this, 'initial');
+          $this.find(datalistInput).val($(':focus').text())
         }
-        break
-
-      case 'Escape':
-        // if state = initial, do nothing
-        // if state = opened or filtered, set state to initial
-        // if state = closed, do nothing
-        if (csState === 'opened' || csState === 'filtered') {
-          toggleList('Shut')
-          setState('initial')
-        }
-        break
-
-      case 'ArrowDown':
-        if (csState === 'initial' || csState === 'closed') {
-          toggleList2('Open')
-          moveFocus2(csInput2, 'forward')
-          setState('opened')
-        } else {
-          toggleList2('Open')
-          moveFocus2(currentFocus, 'forward')
-        }
-        break
-      case 'ArrowUp':
-        if (csState === 'initial' || csState === 'closed') {
-          toggleList2('Open')
-          moveFocus2(csInput, 'back')
-          setState('opened')
-        } else {
-          moveFocus2(currentFocus, 'back')
-        }
-        break
-      default:
-        if (csState === 'initial') {
-          toggleList2('Open')
-          doFilter2()
-          setState('filtered')
-        } else if (csState === 'opened') {
-          doFilter2()
-          setState('filtered')
-        } else if (csState === 'closed') {
-          doFilter2()
-          setState('filtered')
-        } else {
-          doFilter2()
-        }
-        break
+        break;
     }
   }
+
+  $(document).mouseup(function (e) {
+    if (!datalist.is(e.target)
+      && datalist.has(e.target).length === 0) {
+      datalist.attr('data-state', 'initial');
+      datalist.find(datalistUi).slideUp(300)
+    }
+  });
+
+  datalistInput.on('input', function () {
+    let parent = $(this).parents('.datalist');
+    toggleDatalist(parent, 'opened');
+    let val = $(this).val().toUpperCase();
+    $(this).siblings(datalistUi).find(datalistLi).each(function (index, element) {
+      if ( $(this).text().toUpperCase().includes(val) ) {
+        $(this).removeClass('hidden')
+      } else {
+        $(this).addClass('hidden')
+      }
+    })
+  });
 });

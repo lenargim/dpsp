@@ -7,6 +7,7 @@
   @include between(1280, 1439)
     padding-bottom: 6px
     line-height: 18px
+
 .input
   background-color: #F8F9FB
   padding: 16px
@@ -22,11 +23,14 @@
     padding: 14px
     font-size: 14px
     line-height: 18px
+
 .select
   width: 100%
   height: 83px
+
   &__title
     display: block
+
   &__content
     position: absolute
     top: 28px
@@ -47,6 +51,7 @@
     width: 100%
     color: $black
     border: none
+
     &:after
       content: ''
       width: 5px
@@ -61,8 +66,10 @@
       transition: all 0.3s ease
       @include max(1439)
         top: 20px
+
   &__input
     display: none
+
     &:checked + label
       padding: 16px
       max-height: unset
@@ -73,9 +80,11 @@
         padding: 14px
         font-size: 14px
         line-height: 18px
+
       &:hover
         background-color: #F8F9FB
         color: $black
+
   &__label
     display: flex
     align-items: center
@@ -87,133 +96,177 @@
     cursor: pointer
     overflow: hidden
     font-weight: 400
+
     &:hover
       background-color: $red
       color: #fff
+
   &.active
     .select
       &__content
         opacity: 1
         z-index: 10
+
         &:after
           transform: rotate(45deg)
+
       &__label:nth-child(n+2)
         max-height: 50px
         min-height: 40px
         border-top-width: 1px
         padding: 16px
         opacity: 1
+
       &__input:checked + label
         background-color: $red
 
-#myCustomSelect
+.datalist
   position: relative
-  &[aria-expanded="false"]
-    .select-css
-      border-radius: 30px
-      border: 1px solid $gray2
-  &[aria-expanded="true"]
-    .select-css
-      border-radius: 30px 30px 0 0
-      border-top: 2px solid $gray2
-      border-left: 2px solid $gray2
-      border-right: 2px solid $gray2
-      border-bottom: none
-  .custom-select-options
-    border: 1px solid $gray2
-    border-top: none
-    border-radius: 0 0 20px 20px
-    margin: 0
-    padding: 0
-    list-style-type: none
-    font-weight: normal
-    cursor: pointer
-    z-index: 2
+
+  &__ul
     position: absolute
+    background-color: #fff
     width: 100%
-    background-color: #ffffff
+
+  &__li
     overflow: hidden
-    &.hidden-all
-      display: none
-    li
-      padding: 1em 24px
-      &:hover
-        background: $gray2
-        color: #66afd9
-#custom-select-input
-  display: block
-  font-size: 16px
-  line-height: 23px
-  padding: 16.5px 24px
-  color: $gray1
-  width: 100%
-  max-width: 100%
-  box-sizing: border-box
-  margin: 0
-  appearance: none
-  background-color: #fff
-  position: relative
-  z-index: 2
-  border: 1px solid $gray2
-.select-css::-ms-expand
-  display: none
-.select-css:hover
-  border-color: #888
-.select-css:focus
-  color: $black
-  outline: none
-#city-modal
-  position: relative
-  .select-css
+    outline: none
     cursor: pointer
-  &:after
-    content: ''
-    width: 5px
-    height: 5px
-    border-left: 2px solid #000
-    border-top: 2px solid #000
-    position: absolute
-    right: 19px
-    top: 25px
-    transform: rotate(-135deg)
-    transform-origin: center
-    transition: all 0.3s ease
-    @include between(1280, 1439)
-      top: 20px
-  &[aria-expanded="true"]
-    &:after
-      transform: rotate(45deg)
-    .select-css
-      border-radius: 12px 12px 0 0
-  .custom-select-options
+
+    &:focus, &:hover
+      background-color: $red
+
+  &#studios-search
+    transition: all 0.4s ease
+
+    &[data-state="opened"]
+      .datalist__input
+        border-radius: 20px 20px 0 0
+
+    .datalist
+      &__ul
+        z-index: 3
+        box-shadow: 0 0 2px rgba(0, 0, 0, 0.08), 0 2px 24px rgba(0, 0, 0, 0.08)
+        border-radius: 0 0 20px 20px
+        overflow: hidden
+        max-height: 300px
+        overflow-y: auto
+
+      &__li
+        padding: 16px 24px
+
+  &#city-choose
     position: relative
-    transition: all 0.3s ease-out
-    z-index: 11
-    background-color: #F8F9FB
-    border-radius: 0 0 12px 12px
-    font-weight: 500
-    font-size: 15px
-    line-height: 20px
-    width: 100%
-    color: $black
-    border: none
-    max-height: 200px
-    overflow-y: auto
-    display: none
-    opacity: 1
-    &.hidden-all
-      opacity: 0
-    li
-      padding: 16px
-      transition: all 0.2s ease
-      cursor: pointer
+
+    &[data-state="initial"]
+      .datalist__input
+        border-radius: 30px
+        border: 1px solid $gray2
+
+    &[data-state="opened"]
+      .datalist__input
+        border-radius: 30px 30px 0 0
+        border-top: 1px solid $gray2
+        border-left: 1px solid $gray2
+        border-right: 1px solid $gray2
+        border-bottom: none
+
+    .datalist
+      &__ul
+        border: 1px solid $gray2
+        border-top: none
+        border-radius: 0 0 20px 20px
+        margin: 0
+        padding: 0
+        list-style-type: none
+        font-weight: normal
+        cursor: pointer
+        z-index: 2
+        position: absolute
+        width: 100%
+        background-color: #ffffff
+        max-height: 300px
+        overflow-x: hidden
+        overflow-y: auto
+
+      &__li
+        padding: 1em 24px
+
+      &__input
+        transition: all 0.3s ease
+        display: block
+        font-size: 16px
+        line-height: 23px
+        padding: 16.5px 24px
+        color: $gray1
+        width: 100%
+        max-width: 100%
+        box-sizing: border-box
+        margin: 0
+        appearance: none
+        background-color: #fff
+        position: relative
+        z-index: 2
+        border: 1px solid $gray2
+
+  &#city-modal
+    position: relative
+
+    &:after
+      content: ''
+      width: 5px
+      height: 5px
+      border-left: 2px solid #000
+      border-top: 2px solid #000
+      position: absolute
+      right: 19px
+      top: 25px
+      transform: rotate(-135deg)
+      transform-origin: center
+      transition: all 0.3s ease
       @include between(1280, 1439)
-        padding: 14px
-      strong
+        top: 20px
+
+    &[data-state="opened"]
+      &:after
+        transform: rotate(45deg)
+
+      .datalist__input
+        border-radius: 12px 12px 0 0
+
+    .datalist
+      &__input
+        cursor: pointer
+
+      &__ul
+        position: relative
+        transition: all 0.3s ease-out
+        z-index: 11
+        background-color: #F8F9FB
+        border-radius: 0 0 12px 12px
+        font-weight: 500
+        font-size: 15px
+        line-height: 20px
+        width: 100%
+        color: $black
+        border: none
+        max-height: 200px
+        overflow-y: auto
+        display: none
+        opacity: 1
+
+      &__li
+        padding: 16px
+        transition: all 0.2s ease
+        cursor: pointer
         font-size: 15px
         font-weight: 400
-      &:hover
-        background: $red
-        color: $black
-      &:last-of-type
-        border-radius: 0 0 12px 12px
+        @include between(1280, 1439)
+          padding: 14px
+
+        &:hover
+          background: $red
+          color: $black
+
+        &:last-of-type
+          border-radius: 0 0 12px 12px

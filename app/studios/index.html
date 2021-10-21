@@ -12,15 +12,25 @@
       <h1 class="title">Студии в Казани</h1>
     </div>
     <form role="search" class="studios-page__search">
-      <input type="text" list="addresses" placeholder="Введите адрес">
-      <datalist id="addresses">
-        <option value="г. Казань, Комсомольский пр-т, д. 13">
-        <option value="г. Казань, ул. 50 лет ВЛКСМ, д. 2/1">
-        <option value="г. Казань, ул. Мира, д. 53">
-      </datalist>
-      <button type="submit">
-        <!--#include virtual="/images/dist/svg/search.svg" -->
-      </button>
+      <div class="datalist" id="studios-search" data-state="initial">
+        <input type="text"
+               id="datalist-input"
+               class="datalist__input"
+               placeholder="Введите адрес"
+               autocomplete="off">
+        <button type="submit">
+          <!--#include virtual="/images/dist/svg/search.svg" -->
+        </button>
+        <ul class="datalist__ul hidden" id="datalist-list">
+          <li class="datalist__li" tabindex="-1">г. Казань, Комсомольский пр-т, д. 13</li>
+          <li class="datalist__li" tabindex="-1">г. Казань, ул. 50 лет ВЛКСМ, д. 2/1</li>
+          <li class="datalist__li" tabindex="-1">г. Казань, ул. Мира, д. 53</li>
+          <li class="datalist__li" tabindex="-1">г. Казань, ул. Мира, д. 51</li>
+          <li class="datalist__li" tabindex="-1">г. Казань, ул. Мира, д. 11</li>
+          <li class="datalist__li" tabindex="-1">г. Москва, ул. Мира, д. 11</li>
+          <li class="datalist__li" tabindex="-1">г. Москва, ул. Тверская, д. 11</li>
+        </ul>
+      </div>
     </form>
     <div class="studios-page__wrap">
       <div class="studios__item">

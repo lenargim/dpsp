@@ -14,14 +14,15 @@
       <div class="modal__row">
         <div class="select select_city">
           <label for="city-modal" class="label select__title">Город</label>
-          <div class="custom-select" id="city-modal">
-            <input type="text" id="modal-select-input" class="select-css input" aria-describedby="custom-select-info" autocomplete="off">
-            <ul class="custom-select-options hidden-all" id="modal-select-list">
-              <li><strong>Казань</strong></li>
-              <li><strong>Москва</strong></li>
-              <li><strong>Санкт-Петербург</strong></li>
-              <li><strong>Екатеринбург</strong></li>
-              <li><strong>Самара</strong></li>
+          <div class="datalist" id="city-modal" data-state="initial">
+            <input type="text" id="modal-select-input" class="input datalist__input"
+                   autocomplete="off">
+            <ul class="hidden datalist__ul" id="modal-select-list">
+              <li class="datalist__li" tabindex="-1">Казань</li>
+              <li class="datalist__li" tabindex="-1">Москва</li>
+              <li class="datalist__li" tabindex="-1">Санкт-Петербург</li>
+              <li class="datalist__li" tabindex="-1">Екатеринбург</li>
+              <li class="datalist__li" tabindex="-1">Самара</li>
             </ul>
           </div>
         </div>
@@ -30,13 +31,13 @@
         <div class="select select_address">
           <div class="label select__title">Выберите ближайшую студию</div>
           <div class="select__content">
-            <input value="пр Ямашева, 108" id="Address0" class="select__input" type="radio" name="Address" checked />
+            <input value="пр Ямашева, 108" id="Address0" class="select__input" type="radio" name="Address" checked/>
             <label for="Address0" class="select__label">пр Ямашева, 108</label>
-            <input value="пр Ямашева, 109" id="Address1" class="select__input" type="radio" name="Address" />
+            <input value="пр Ямашева, 109" id="Address1" class="select__input" type="radio" name="Address"/>
             <label for="Address1" class="select__label">пр Ямашева, 109</label>
-            <input value="пр Ямашева, 110" id="Address2" class="select__input" type="radio" name="Address" />
+            <input value="пр Ямашева, 110" id="Address2" class="select__input" type="radio" name="Address"/>
             <label for="Address2" class="select__label">пр Ямашева, 110</label>
-            <input value="пр Ямашева, 111" id="Address3" class="select__input" type="radio" name="Address" />
+            <input value="пр Ямашева, 111" id="Address3" class="select__input" type="radio" name="Address"/>
           </div>
         </div>
       </div>
@@ -51,14 +52,15 @@
       <button type="submit" class="modal-city__submit">
         <!--#include virtual="/images/dist/svg/search.svg" -->
       </button>
-      <div class="custom-select" id="myCustomSelect">
-        <input type="text" id="custom-select-input" class="select-css" placeholder="Поиск города" aria-describedby="custom-select-info" autocomplete="off">
-        <ul class="custom-select-options hidden-all" id="custom-select-list">
-          <li><strong>Казань</strong></li>
-          <li><strong>Москва</strong></li>
-          <li><strong>Санкт-Петербург</strong></li>
-          <li><strong>Екатеринбург</strong></li>
-          <li><strong>Самара</strong></li>
+      <div class="datalist" id="city-choose">
+        <input type="text" id="city-choose-input" class="datalist__input" placeholder="Поиск города"
+               autocomplete="off">
+        <ul class="hidden datalist__ul" id="city-choose-list">
+          <li class="datalist__li" tabindex="-1">Казань</li>
+          <li class="datalist__li" tabindex="-1">Москва</li>
+          <li class="datalist__li" tabindex="-1">Санкт-Петербург</li>
+          <li class="datalist__li" tabindex="-1">Екатеринбург</li>
+          <li class="datalist__li" tabindex="-1">Самара</li>
         </ul>
       </div>
     </div>
@@ -112,7 +114,8 @@
       <div class="modal-thx__img">
         <!--#include virtual="/images/dist/svg/thx.svg" -->
       </div>
-      <div class="modal-thx__title"><span class="modal-thx__name">Екатерина</span><span>, вы успешно записались!</span></div>
+      <div class="modal-thx__title"><span class="modal-thx__name">Екатерина</span><span>, вы успешно записались!</span>
+      </div>
       <div class="modal-thx__box">
         <div class="modal-thx__box-title">Услуга</div>
         <div class="modal-thx__box-desc service"></div>
@@ -255,7 +258,8 @@
           <div class="register__detail-title">Выберите специалиста</div>
           <form class="register__detail-subform register-next">
             <div class="register__detail-choose register__detail-choose_nocheckbox">
-              <input type="radio" id="subform-specialist1" class="choose-specialist" name="specialist" value="Светлана Петрова">
+              <input type="radio" id="subform-specialist1" class="choose-specialist" name="specialist"
+                     value="Светлана Петрова">
               <label for="subform-specialist1" class="register__detail-choose-box register__detail-choose-box">
                 <div class="register__detail-img img">
                   <img src="images/dist/specialist/specialist1.jpg" alt="Светлана Петрова">
@@ -267,7 +271,8 @@
               </label>
             </div>
             <div class="register__detail-choose register__detail-choose_nocheckbox">
-              <input type="radio" id="subform-specialist2" class="choose-specialist" name="specialist" value="Маргарита Измайлова">
+              <input type="radio" id="subform-specialist2" class="choose-specialist" name="specialist"
+                     value="Маргарита Измайлова">
               <label for="subform-specialist2" class="register__detail-choose-box register__detail-choose-box">
                 <div class="register__detail-img img">
                   <img src="images/dist/specialist/specialist2.jpg" alt="Маргарита Измайлова">
